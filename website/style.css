@@ -1,0 +1,104 @@
+body{
+    background-image: url('../website/ASSETS/il_1588xN.2356835402_1ia8.jpg');
+    background-size: cover;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+#app{
+    display: grid;
+    grid-auto-rows: minmax(150px, auto);
+    /* grid-template-columns:  */
+    height:100vh;
+    color: white;
+    justify-content: center;
+    grid-gap: 1em;
+    font-size: 20px;
+    font-family: 'Oswald', sans-serif;
+}
+
+.entry{
+    background: rgba(59, 74, 107, .4);
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.headline {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.title{
+    text-decoration: underline; 
+    font-size: 25px;
+}
+
+/*  Basic Styling To Override Default For Basic HTML Elements */
+label{
+    display:block;
+    font-size: 27px;
+}
+
+input{
+    display:block;
+    height: 60px;
+    width: 320px;
+    background:#3e90b5;
+    border-radius: 5px;
+    color: white;
+    font-size: 20px;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 300;
+    border: none;
+}
+
+button{
+    width: 300px;
+    height: 70px;
+    background: #3b4a6b;
+    color: white;
+    font-size: 26px;
+    font-family: 'Oswald', sans-serif;
+    border-radius: 10px;
+    box-shadow: 2px 4px 5px #444;
+}
+
+h1{
+    font-size: 36px;
+}
+
+textarea{
+    background:#3e90b5;
+    border-radius: 5px;
+    color: white;
+    font-weight: 300;
+    font-size: 20px;
+    font-family: 'Oswald', sans-serif;
+    border: none;
+}
+
+/* Reset style for HTML element on active to have no border*/
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+/* Style for Placeholder Text*/
+::placeholder { /* Firefox, Chrome, Opera */ 
+    color: #9bb7c3;
+    font-weight: 100; 
+    font-family: 'Oswald', sans-serif;
+} 
+  
+:-ms-input-placeholder { /* Internet Explorer 10-11 */ 
+    color: #9bb7c3;
+    font-weight: 100px; 
+    font-family: 'Oswald', sans-serif;
+} 
+  
+::-ms-input-placeholder { /* Microsoft Edge */ 
+    color: #9bb7c3;
+    font-weight: 100; 
+    font-family: 'Oswald', sans-serif;
+} 
