@@ -20,8 +20,15 @@ const cors=require('cors');
 const { request, json } = require('express');
 app.use(cors());
 
+// Define fetch in NodeJS
+const fetch = require('node-fetch');
+
+app.get('/', function (req, res) {
+    res.sendFile('dist/index.html')
+});
+
 /* Initialize the main project folder */
-app.use(express.static('src'));
+app.use(express.static('dist'));
 
 /* Spin up the server */
 const port=8000;
