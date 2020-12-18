@@ -71,3 +71,7 @@ const updateUI=async()=>{
     }
 }
 
+export { performAction }
+export { getWeather }
+export { postData }
+export { updateUI }
