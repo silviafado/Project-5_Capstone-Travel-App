@@ -1,23 +1,28 @@
-/* Setup empty JS object to act as endpoint for all routes */
-projectData={};
+//Require .env file for API_KEYs
+const dotenv = require('dotenv');
+dotenv.config();
 
-/* Express to run server and routes */
-const express=require('express');
+// API_KEY for sentiment analysis
+const apiGeonames = process.env.API_KEY_GEONAMES;
+const apiWeatherbit = process.env.API_KEY_WEATHERBIT;
+const apiPixabay = process.env.API_KEY_PIXABAY;
 
-/* Start up an instance of app */
-const app=express();
+const path = require('path');
 
-/* Dependencies */
-/* Middleware */
+//Express server
+const express = require('express');
+const app = express();
+app.use(express.static('dist'));
 
-/* Here we are configuring express to use body-parser as middle-ware */
-const bodyParser=require('body-parser');
-app.use(bodyParser.urlencoded({extended: false}));
+// Body-parser middleware
+const bodyParser = require('body-parser');
+/* to use json */
 app.use(bodyParser.json());
+/* to use url encoded values */
+app.use(bodyParser.urlencoded({extended: true}));
 
-/* Cors for cross origin allowance */
-const cors=require('cors');
-const { request, json } = require('express');
+//CORS middleware
+var cors = require('cors');
 app.use(cors());
 
 // Define fetch in NodeJS
@@ -27,22 +32,16 @@ app.get('/', function (req, res) {
     res.sendFile('dist/index.html')
 });
 
-/* Initialize the main project folder */
-app.use(express.static('dist'));
+// designates what port the app will listen to for incoming requests
+app.listen(8001, function () {
+    console.log('Example app listening on port 8081!')
+});
 
-/* Spin up the server */
-const port=8001;
-
-const server=app.listen(port,listening);
-
-/* Callback to debug */
-function listening(){
-    console.log('server running');
-    console.log(`running on localhost: ${port}`);
-};
+/* Setup empty JS object to act as endpoint for all routes */
+projectData={};
 
 /* Initialize all route with a callback function */
-app.get('/all', getData);
+app.get('/data', getData);
 
 /* Callback function to complete GET '/all' */
 function getData(req,res){
@@ -52,14 +51,24 @@ function getData(req,res){
 /* POST route */
 app.post('/addEntry', addEntry);
 
-function addEntry(request, response) {
-    projectData = {
-    date: request.body.date,
-    location: request.body.destination,
-    country: request.body.country,
-    city: request.body.city,
-    temp: request.body.temp,
-    };
-    response.send({ message: "Post received" });
-};
+// Async function for API call to meaningcloud.com
+async function addEntry(req, res) {
+    let cityToProcess = req.body.formText;
+    const urlGeonames = `https://api.meaningcloud.com/sentiment-2.1?key=${apiGeonames}&url=${cityToProcess}&lang=auto`;
+    const apiResult = await fetch(url);
+    try {
+        const apiData = await apiResult.json();
+        console.log(apiData);
+        sentimentData={
+            "agreement":apiData.agreement,
+            "subjectivity":apiData.subjectivity,
+            "confidence":apiData.confidence,
+            "irony":apiData.irony,
+        };
+        console.log(sentimentData);
+        res.send(sentimentData);
+    } catch (error) {
+        console.log('ERROR: Could not get apiData' + error);
+    }
+}
     
