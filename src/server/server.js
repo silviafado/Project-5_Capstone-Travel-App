@@ -34,7 +34,7 @@ app.get('/', function (req, res) {
 
 // designates what port the app will listen to for incoming requests
 app.listen(8001, function () {
-    console.log('Example app listening on port 8081!')
+    console.log('Example app listening on port 8001!')
 });
 
 /* Setup empty JS object to act as endpoint for all routes */
