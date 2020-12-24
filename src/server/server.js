@@ -31,7 +31,7 @@ app.get('/', function (req, res) {
 app.use(express.static('dist'));
 
 /* Spin up the server */
-const port=8000;
+const port=8001;
 
 const server=app.listen(port,listening);
 
@@ -55,10 +55,10 @@ app.post('/addEntry', addEntry);
 function addEntry(request, response) {
     projectData = {
     date: request.body.date,
-    location: request.body.location,
+    location: request.body.destination,
     country: request.body.country,
+    city: request.body.city,
     temp: request.body.temp,
-    content: request.body.content
     };
     response.send({ message: "Post received" });
 };

@@ -1,42 +1,113 @@
-/*
- * ATTENTION: The "eval" devtool has been used (maybe by default in mode: "development").
- * This devtool is not neither made for production nor for readable output files.
- * It uses "eval()" calls to create a separate source file in the browser devtools.
- * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
- * or disable the default devtool with "devtool: false".
- * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
- */
+var Client;Client =
 /******/ (() => { // webpackBootstrap
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/client/styles/style.scss":
-/*!**************************************!*\
-  !*** ./src/client/styles/style.scss ***!
-  \**************************************/
+/***/ 70:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n\n//# sourceURL=webpack://capstone-travel-app/./src/client/styles/style.scss?");
+// ESM COMPAT FLAG
+__webpack_require__.r(__webpack_exports__);
 
-/***/ }),
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  "getWeather": () => /* reexport */ getWeather,
+  "performAction": () => /* reexport */ performAction,
+  "postData": () => /* reexport */ postData,
+  "updateUI": () => /* reexport */ updateUI
+});
 
-/***/ "./src/client/index.js":
-/*!*****************************!*\
-  !*** ./src/client/index.js ***!
-  \*****************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+;// CONCATENATED MODULE: ./src/client/js/formHandler.js
+/* Global Variables */
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"performAction\": () => /* reexport safe */ _js_app__WEBPACK_IMPORTED_MODULE_0__.performAction,\n/* harmony export */   \"getWeather\": () => /* reexport safe */ _js_app__WEBPACK_IMPORTED_MODULE_0__.getWeather,\n/* harmony export */   \"postData\": () => /* reexport safe */ _js_app__WEBPACK_IMPORTED_MODULE_0__.postData,\n/* harmony export */   \"updateUI\": () => /* reexport safe */ _js_app__WEBPACK_IMPORTED_MODULE_0__.updateUI\n/* harmony export */ });\n/* harmony import */ var _js_app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./js/app */ \"./src/client/js/app.js\");\n/* harmony import */ var _styles_style_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./styles/style.scss */ \"./src/client/styles/style.scss\");\n\n\n\n\n\n\n\n\n\n\nalert(\"Welcome to Travel App :)\")\nconsole.log(\"Hello!!\");\n\n//# sourceURL=webpack://capstone-travel-app/./src/client/index.js?");
+/* Personal API Key for OpenWeatherMap API */
+let baseURL='http://api.openweathermap.org/data/2.5/weather?q=';
+const apiKey='&appid=1111cbdcf8fc8f48d8f36f640aab97dc&units=metric';
 
-/***/ }),
+/* Create a new date instance dynamically with JS */
+let d = new Date();
+let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
 
-/***/ "./src/client/js/app.js":
-/*!******************************!*\
-  !*** ./src/client/js/app.js ***!
-  \******************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/* Event listener to add function to existing HTML DOM element */
+const generate=document.getElementById('generate').addEventListener('click', performAction);
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"performAction\": () => /* binding */ performAction,\n/* harmony export */   \"getWeather\": () => /* binding */ getWeather,\n/* harmony export */   \"postData\": () => /* binding */ postData,\n/* harmony export */   \"updateUI\": () => /* binding */ updateUI\n/* harmony export */ });\n/* Global Variables */\n\n/* Personal API Key for OpenWeatherMap API */\nlet baseURL='http://api.openweathermap.org/data/2.5/weather?q=';\nconst apiKey='&appid=1111cbdcf8fc8f48d8f36f640aab97dc&units=metric';\n\n/* Create a new date instance dynamically with JS */\nlet d = new Date();\nlet newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();\n\n/* Event listener to add function to existing HTML DOM element */\nconst generate=document.getElementById('generate').addEventListener('click', performAction);\n\n/* Function called by event listener */\nfunction performAction(e){\n    const zip=document.getElementById('zip').value;\n    const url=baseURL+zip+apiKey;\n    const feelings=document.getElementById('feelings').value;\n    getWeather(url)\n        .then (function(data){\n            console.log(data)\n        postData('http://localhost:8000/addEntry', data={date:newDate, location: data.name, country:data.sys.country, temp:data.main.temp, content:feelings})\n        .then (function(newEntry){\n        updateUI()\n        })\n    })\n}\n\n/* Function to GET Web API Data */\nconst getWeather=async(url)=>{\n    const res=await fetch(url)\n    try{\n        const data=await res.json();\n        console.log(data);\n        return (data);\n    }catch(error){\n        console.log('error', error);\n    }\n};\n\n/* Function to POST data */\nconst postData=async(url='', data={})=>{\n    console.log(data)\n    const response=await fetch(url, {\n    method:'POST',\n    credentials:'same-origin',\n    headers:{'Content-Type':'application/json; charset=UTF-8'},\n    body: JSON.stringify(data),\n    })\n    try{\n        const newData=await response.json();\n        console.log(newData);\n        return newData\n    }catch(error){\n        console.log('error',error);\n    }\n}\n\n/*Function to update User Interface*/\nconst updateUI=async()=>{\n    const request=await fetch('http://localhost:8000/all');\n    try{\n        const newEntry=await request.json();\n        document.getElementById('date').innerHTML='Date: '+newEntry.date;\n        document.getElementById('location').innerHTML='Location: '+newEntry.location;\n        document.getElementById('country').innerHTML='Country: '+newEntry.country;\n        document.getElementById('temp').innerHTML='Temperature in ºC: '+newEntry.temp;\n        document.getElementById('content').innerHTML='Feelings: '+newEntry.content;\n    }catch(error){\n        console.log('error',error);\n    }\n}\n\n\n\n\n\n\n//# sourceURL=webpack://capstone-travel-app/./src/client/js/app.js?");
+/* Function called by event listener */
+function performAction(e){
+    const zip=document.getElementById('zip').value;
+    const url=baseURL+zip+apiKey;
+    const feelings=document.getElementById('feelings').value;
+    getWeather(url)
+        .then (function(data){
+            console.log(data)
+        postData('http://localhost:8001/addEntry', data={date:newDate, location: data.name, country:data.sys.country, temp:data.main.temp, content:feelings})
+        .then (function(newEntry){
+        updateUI()
+        })
+    })
+}
+
+/* Function to GET Web API Data */
+const getWeather=async(url)=>{
+    const res=await fetch(url)
+    try{
+        const data=await res.json();
+        console.log(data);
+        return (data);
+    }catch(error){
+        console.log('error', error);
+    }
+};
+
+/* Function to POST data */
+const postData=async(url='', data={})=>{
+    console.log(data)
+    const response=await fetch(url, {
+    method:'POST',
+    credentials:'same-origin',
+    headers:{'Content-Type':'application/json; charset=UTF-8'},
+    body: JSON.stringify(data),
+    })
+    try{
+        const newData=await response.json();
+        console.log(newData);
+        return newData
+    }catch(error){
+        console.log('error',error);
+    }
+}
+
+/*Function to update User Interface*/
+const updateUI=async()=>{
+    const request=await fetch('http://localhost:8001/all');
+    try{
+        const newEntry=await request.json();
+        document.getElementById('date').innerHTML='Date: '+newEntry.date;
+        document.getElementById('destination').innerHTML='Location: '+newEntry.destination;
+        document.getElementById('country').innerHTML='Country: '+newEntry.country;
+        document.getElementById('city').innerHTML='Country: '+newEntry.city;
+        document.getElementById('temp').innerHTML='Temperature in ºC: '+newEntry.temp;
+    }catch(error){
+        console.log('error',error);
+    }
+}
+
+
+
+
+
+;// CONCATENATED MODULE: ./src/client/index.js
+
+
+
+
+
+
+
+
+
+
+alert("Welcome to Travel App :)")
+console.log("Hello!!");
 
 /***/ })
 
@@ -95,9 +166,9 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 	})();
 /******/ 	
 /************************************************************************/
+/******/ 	// module exports must be returned from runtime so entry inlining is disabled
 /******/ 	// startup
-/******/ 	// Load entry module
-/******/ 	__webpack_require__("./src/client/index.js");
-/******/ 	// This entry module used 'exports' so it can't be inlined
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(70);
 /******/ })()
 ;

@@ -1,8 +1,8 @@
 
-import { performAction } from './js/app'
-import { getWeather } from './js/app'
-import { postData } from './js/app'
-import { updateUI } from './js/app'
+import { performAction } from './js/formHandler'
+import { getWeather } from './js/formHandler'
+import { postData } from './js/formHandler'
+import { updateUI } from './js/formHandler'
 
 import './styles/style.scss'
 
