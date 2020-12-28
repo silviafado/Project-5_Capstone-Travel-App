@@ -38,37 +38,58 @@ app.listen(8001, function () {
 });
 
 /* Setup empty JS object to act as endpoint for all routes */
-projectData={};
+geoData={};
 
 /* Initialize all route with a callback function */
 app.get('/data', getData);
 
-/* Callback function to complete GET '/all' */
+/* Callback function to complete GET '/data' */
 function getData(req,res){
-    res.send(projectData)
+    res.send(geoData)
 };
 
 /* POST route */
 app.post('/addEntry', addEntry);
 
-// Async function for API call to meaningcloud.com
+// Async function for API call to geonames.org
 async function addEntry(req, res) {
-    let cityToProcess = req.body.formText;
-    const urlGeonames = `https://api.meaningcloud.com/sentiment-2.1?key=${apiGeonames}&url=${cityToProcess}&lang=auto`;
-    const apiResult = await fetch(url);
+    let cityToProcess = req.body.formDestination;
+    const urlGeonames = `http://api.geonames.org/search?username=${apiGeonames}&type=json&name=${cityToProcess}`;
+    const geoResult = await fetch(urlGeonames);
     try {
-        const apiData = await apiResult.json();
+        const apiData = await geoResult.json();
         console.log(apiData);
-        sentimentData={
-            "agreement":apiData.agreement,
-            "subjectivity":apiData.subjectivity,
-            "confidence":apiData.confidence,
-            "irony":apiData.irony,
+        geoData={
+            "latitude":apiData.lat,
+            "longitude":apiData.lng,
+            "country":apiData.countryName,
+            "city":apiData.name,
         };
-        console.log(sentimentData);
-        res.send(sentimentData);
+        console.log(geoData);
+        res.send(geoData);
     } catch (error) {
         console.log('ERROR: Could not get apiData' + error);
     }
 }
+
+/* Async function for API call to weatherbit.io
+async function addTemp(req, res) {
+    let dateToProcess = req.body.formDeparture;
+    let geoToProcess = req.body.geoData;
+    const urlGeonames = `http://api.geonames.org/postalCodeSearchJSON?postalcode=${cityToProcess}&maxRows=10&username=silviafado`;
+    const geoResult = await fetch(urlGeonames);
+    try {
+        const apiData = await geoResult.json();
+        console.log(apiData);
+        geoData={
+            "latitude":apiData.latitude,
+            "longitude":apiData.longitude,
+            "country":apiData.country,
+        };
+        console.log(geoData);
+        res.send(geoData);
+    } catch (error) {
+        console.log('ERROR: Could not get apiData' + error);
+    }
+}*/
     

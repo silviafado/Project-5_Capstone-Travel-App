@@ -1,15 +1,12 @@
 
-import { performAction } from './js/formHandler'
-import { getWeather } from './js/formHandler'
-import { postData } from './js/formHandler'
-import { updateUI } from './js/formHandler'
+import { performAction, postData, postData2, updateUI } from './js/formHandler'
 
 import './styles/style.scss'
 
 export {
     performAction,
-    getWeather,
     postData,
+    postData2,
     updateUI,
 }
 
