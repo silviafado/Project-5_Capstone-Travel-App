@@ -18,19 +18,24 @@
       <label id="destinationLabel" type="text">Destination city</label>
       <textarea id="destinationInput" type="text" name="destInput" value="" placeholder="Type your destination here" rows="1" columns="30"></textarea>
       <label id="dateLabel" type="text">Departure date</label>
-      <textarea id="dateInput" type="text" name="dateInput" value="" placeholder="Enter your departure date here" rows="1" columns="30"></textarea>
+      <input type="date" id="startDate" name="trip-start" value="2021-01-01" min="2021-01-01" max="2021-12-31" required>
       <button id="performAction" type = "submit" name="check" value="" onclick="return Client.performAction(event)" onsubmit="return Client.performAction(event)">Search</button>
     </section>
     <section>
       <div class ="holder entry">
-      <div class = "title">Your destination forecast</div>
-      <div id = "entryHolder" rows="5" columns="50">
-      <div id = "date"></div> 
-      <div id = "destination"></div>
-      <div id = "country"></div>
-      <div id = "city"></div>
-      <div id = "temp"></div>
-      </div>
+        <div class = "title">Your destination forecast</div>
+        <div id = "entryHolder" rows="10" columns="50">
+          <div id = "date"></div> 
+          <div id = "destination"></div>
+          <div id = "country"></div>
+          <div id = "city"></div>
+          <div id = "temp"></div>
+          <div id = "max_temp"></div>
+          <div id = "min_temp"></div>
+          <div id = "wind_dir"></div>
+          <div id = "wind_speed"></div>
+          <div id = "precipitation"></div>
+        </div>
       </div>
     </section>
   </main>

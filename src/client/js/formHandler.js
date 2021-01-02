@@ -11,10 +11,10 @@ const generate=document.getElementById('performAction').addEventListener('click'
 function performAction(event){
     event.preventDefault()
     let formDestination=document.getElementById('destinationInput').value;
-    const formDeparture=document.getElementById('dateInput').value;
-        postData('http://localhost:8001/addEntry', {formDestination})
+    const formDeparture=document.getElementById('startDate').value;
+        postGeo('http://localhost:8001/addEntry', {formDestination})
         .then (() => {
-        postData2('http://localhost:8001/addEntry', {formDeparture})   
+        postWeather('http://localhost:8001/addTemp', {formDeparture})   
         .then (() => {
         updateUI()
         })
@@ -22,7 +22,7 @@ function performAction(event){
 }
 
 /* Function to POST data */
-const postData=async(url='', data={})=>{
+const postGeo=async(url='', data={})=>{
     console.log(data)
     const response=await fetch(url, {
     method:'POST',
@@ -40,7 +40,7 @@ const postData=async(url='', data={})=>{
 }
 
 /* Function to POST data */
-const postData2=async(url='', data={})=>{
+const postWeather=async(url='', data={})=>{
     console.log(data)
     const response=await fetch(url, {
     method:'POST',
@@ -49,9 +49,9 @@ const postData2=async(url='', data={})=>{
     body: JSON.stringify(data),
     })
     try{
-        const newData=await response.json();
-        console.log(newData);
-        return newData
+        const apiTemp=await response.json();
+        console.log('Data received:', apiTemp);
+        return apiTemp;
     }catch(error){
         console.log('error',error);
     }
@@ -63,16 +63,20 @@ const updateUI=async()=>{
     try{
         const newEntry=await request.json();
         document.getElementById('date').innerHTML='Date: '+newEntry.date;
-        document.getElementById('destination').innerHTML='Location: '+newEntry.destination;
         document.getElementById('country').innerHTML='Country: '+newEntry.country;
         document.getElementById('city').innerHTML='City: '+newEntry.city;
         document.getElementById('temp').innerHTML='Temperature in ºC: '+newEntry.temp;
+        document.getElementById('max_temp').innerHTML='Maximum temperature in ºC: '+newEntry.max_temp;
+        document.getElementById('min_temp').innerHTML='Minimum temperature in ºC: '+newEntry.min_temp;
+        document.getElementById('wind_dir').innerHTML='Wind direction in degrees: '+newEntry.wind_dir;
+        document.getElementById('wind_speed').innerHTML='Wind speed in m/s: '+newEntry.wind_speed;
+        document.getElementById('precipitation').innerHTML='Probability of Precipitation (%): '+newEntry.precipitation;
     }catch(error){
         console.log('error',error);
     }
 }
 
 export { performAction }
-export { postData }
-export { postData2 }
+export { postGeo }
+export { postWeather }
 export { updateUI }
