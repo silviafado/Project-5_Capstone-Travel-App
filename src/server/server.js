@@ -38,14 +38,15 @@ app.listen(8001, function () {
 });
 
 /* Setup empty JS object to act as endpoint for all routes */
-geoData={}
+geoData={};
+tempData={};
 
-/* Initialize all route with a callback function */
+/* Initialize data route with a callback function */
 app.get('/data', getData);
 
 /* Callback function to complete GET '/data' */
 function getData(req,res){
-    res.send(geoData)
+    res.send(tempData)
 };
 
 /* POST route */
@@ -86,6 +87,8 @@ async function addTemp(req, res) {
         console.log(apiTemp);
         tempData={
             "date":apiTemp.data[0].valid_date,
+            "city":apiTemp.city_name,
+            "country":apiTemp.country_code,
             "temp":apiTemp.data[0].temp,
             "max_temp":apiTemp.data[0].max_temp,
             "min_temp":apiTemp.data[0].min_temp,
@@ -100,35 +103,27 @@ async function addTemp(req, res) {
     }
 }
 
-/* POST route */
-app.post('/addEntry', postEntry);
+/* Initialize pix route with a callback function */
+app.get('/pix', getPix);
 
-async function postEntry(req, res) {
-    try{
-        await Promise.all([
-            addEntry(),
-            addTemp(),
-        ]).then ((values) => {
-            console.log(values);
-        });
-        console.log(geoData);
-        console.log(tempData);
-        const travelData = {
-            "latitude":geoData.latitude,
-            "longitude":geoData.longitude,
-            "country":geoData.country,
-            "city":geoData.city,
-            "date":tempData.date,
-            "temp":tempData.temp,
-            "max_temp":tempData.max_temp,
-            "min_temp":tempData.min_temp,
-            "wind_dir":tempData.wind_dir,
-            "wind_speed":tempData.wind_speed,
-            "precipitation":tempData.precipitation,
-        }
-        console.log(travelData);
-        res.send(travelData);
-    } catch(error){
-        console.log('error',error);
-    }    
+/* Callback function to complete GET '/pix' */
+function getPix(req,res){
+    res.send(pix)
+};
+
+/* POST route */
+app.post('/addPix', addPix);
+
+// Async function for API call to geonames.org
+async function addPix(req, res) {
+    let city = req.body.formDestination;
+    const urlPixabay = `https://pixabay.com/api/?key=${apiPixabay}&q=${city}&image_type=photo&orientation=horizontal&category=travel`;
+    const pixResult = await fetch(urlPixabay);
+    try {
+        const {hits} = await pixResult.json()
+        return (hits.length > 0 && hits[0].webformatURL) || ''
+    } catch (error) {
+        console.log('ERROR: Could not get image from pixabay' + error);
+    }
 }
+

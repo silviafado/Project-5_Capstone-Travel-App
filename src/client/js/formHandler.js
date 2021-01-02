@@ -1,5 +1,8 @@
 /* Global Variables */
 
+import fetch from "node-fetch";
+import { ProvidePlugin } from "webpack";
+
 /* Create a new date instance dynamically with JS */
 let d = new Date();
 let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
@@ -17,6 +20,9 @@ function performAction(event){
         postWeather('http://localhost:8001/addTemp', {formDeparture})   
         .then (() => {
         updateUI()
+        })
+        .then (() => {
+        uploadPix()    
         })
     })
 }
@@ -63,8 +69,8 @@ const updateUI=async()=>{
     try{
         const newEntry=await request.json();
         document.getElementById('date').innerHTML='Date: '+newEntry.date;
-        document.getElementById('country').innerHTML='Country: '+newEntry.country;
         document.getElementById('city').innerHTML='City: '+newEntry.city;
+        document.getElementById('country').innerHTML='Country: '+newEntry.country;       
         document.getElementById('temp').innerHTML='Temperature in ºC: '+newEntry.temp;
         document.getElementById('max_temp').innerHTML='Maximum temperature in ºC: '+newEntry.max_temp;
         document.getElementById('min_temp').innerHTML='Minimum temperature in ºC: '+newEntry.min_temp;
@@ -76,7 +82,18 @@ const updateUI=async()=>{
     }
 }
 
+const uploadPix=async()=>{
+    const request=await fetch('http://localhost:8001/pix');
+    try{
+        const newPix=await request.json();
+        document.getElementById('dest_picture').innerHTML='Destination picture: '+newPix.;
+    }catch(error){
+        console.log('error',error);
+    }
+}
+
 export { performAction }
 export { postGeo }
 export { postWeather }
 export { updateUI }
+export { uploadPix }

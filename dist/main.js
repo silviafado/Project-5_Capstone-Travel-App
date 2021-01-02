@@ -3,6 +3,37 @@ var Client;Client =
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ 300:
+/***/ ((module, exports) => {
+
+
+
+// ref: https://github.com/tc39/proposal-global
+var getGlobal = function () {
+	// the only reliable means to get the global object is
+	// `Function('return this')()`
+	// However, this causes CSP violations in Chrome apps.
+	if (typeof self !== 'undefined') { return self; }
+	if (typeof window !== 'undefined') { return window; }
+	if (typeof global !== 'undefined') { return global; }
+	throw new Error('unable to locate global object');
+}
+
+var global = getGlobal();
+
+module.exports = exports = global.fetch;
+
+// Needed for TypeScript and Webpack.
+if (global.fetch) {
+	exports.default = global.fetch.bind(global);
+}
+
+exports.Headers = global.Headers;
+exports.Request = global.Request;
+exports.Response = global.Response;
+
+/***/ }),
+
 /***/ 70:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -14,11 +45,17 @@ __webpack_require__.d(__webpack_exports__, {
   "performAction": () => /* reexport */ performAction,
   "postGeo": () => /* reexport */ postGeo,
   "postWeather": () => /* reexport */ postWeather,
-  "updateUI": () => /* reexport */ updateUI
+  "updateUI": () => /* reexport */ updateUI,
+  "uploadPix": () => /* reexport */ uploadPix
 });
 
+// EXTERNAL MODULE: ./node_modules/node-fetch/browser.js
+var browser = __webpack_require__(300);
+var browser_default = /*#__PURE__*/__webpack_require__.n(browser);
 ;// CONCATENATED MODULE: ./src/client/js/formHandler.js
 /* Global Variables */
+
+
 
 /* Create a new date instance dynamically with JS */
 let d = new Date();
@@ -38,13 +75,16 @@ function performAction(event){
         .then (() => {
         updateUI()
         })
+        .then (() => {
+        uploadPix()    
+        })
     })
 }
 
 /* Function to POST data */
 const postGeo=async(url='', data={})=>{
     console.log(data)
-    const response=await fetch(url, {
+    const response=await browser_default()(url, {
     method:'POST',
     credentials:'same-origin',
     headers:{'Content-Type':'application/json; charset=UTF-8'},
@@ -62,7 +102,7 @@ const postGeo=async(url='', data={})=>{
 /* Function to POST data */
 const postWeather=async(url='', data={})=>{
     console.log(data)
-    const response=await fetch(url, {
+    const response=await browser_default()(url, {
     method:'POST',
     credentials:'same-origin',
     headers:{'Content-Type':'application/json; charset=UTF-8'},
@@ -79,12 +119,12 @@ const postWeather=async(url='', data={})=>{
 
 /*Function to update User Interface*/
 const updateUI=async()=>{
-    const request=await fetch('http://localhost:8001/data');
+    const request=await browser_default()('http://localhost:8001/data');
     try{
         const newEntry=await request.json();
         document.getElementById('date').innerHTML='Date: '+newEntry.date;
-        document.getElementById('country').innerHTML='Country: '+newEntry.country;
         document.getElementById('city').innerHTML='City: '+newEntry.city;
+        document.getElementById('country').innerHTML='Country: '+newEntry.country;       
         document.getElementById('temp').innerHTML='Temperature in ºC: '+newEntry.temp;
         document.getElementById('max_temp').innerHTML='Maximum temperature in ºC: '+newEntry.max_temp;
         document.getElementById('min_temp').innerHTML='Minimum temperature in ºC: '+newEntry.min_temp;
@@ -95,6 +135,16 @@ const updateUI=async()=>{
         console.log('error',error);
     }
 }
+
+const uploadPix=async()=>{
+    const request=await browser_default()('http://localhost:8001/pix');
+    try{
+        const newPix=await request.json();
+    }catch(error){
+        console.log('error',error);
+    }
+}
+
 
 
 
@@ -139,6 +189,18 @@ console.log("Hello!!");
 /******/ 	}
 /******/ 	
 /************************************************************************/
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => module['default'] :
+/******/ 				() => module;
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
 /******/ 		// define getter functions for harmony exports
