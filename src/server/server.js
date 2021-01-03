@@ -117,11 +117,11 @@ app.post('/addPix', addPix);
 // Async function for API call to geonames.org
 async function addPix(req, res) {
     let city = req.body.formDestination;
-    const urlPixabay = `https://pixabay.com/api/?key=${apiPixabay}&q=${city}&image_type=photo&orientation=horizontal&category=travel`;
+    const urlPixabay = `https://pixabay.com/api/?key=${apiPixabay}&q=${city}&image_type=photo&orientation=horizontal&category=travel&pretty=true`;
     const pixResult = await fetch(urlPixabay);
+    console.log('Pixabay API: ', response.status, response.statusText, response.ok);
     try {
-        const {hits} = await pixResult.json()
-        return (hits.length > 0 && hits[0].webformatURL) || ''
+        return pixResult.json();
     } catch (error) {
         console.log('ERROR: Could not get image from pixabay' + error);
     }

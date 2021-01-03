@@ -1,5 +1,4 @@
 /* Global Variables */
-
 import fetch from "node-fetch";
 import { ProvidePlugin } from "webpack";
 
@@ -19,15 +18,16 @@ function performAction(event){
         .then (() => {
         postWeather('http://localhost:8001/addTemp', {formDeparture})   
         .then (() => {
+        postPix('http://localhost:8001/addPix', {formDestination}) 
+        .then (() => {
         updateUI()
         })
-        .then (() => {
-        uploadPix()    
+   
         })
     })
 }
 
-/* Function to POST data */
+/* Function to POST geoData */
 const postGeo=async(url='', data={})=>{
     console.log(data)
     const response=await fetch(url, {
@@ -45,7 +45,7 @@ const postGeo=async(url='', data={})=>{
     }
 }
 
-/* Function to POST data */
+/* Function to POST tempData */
 const postWeather=async(url='', data={})=>{
     console.log(data)
     const response=await fetch(url, {
@@ -58,6 +58,23 @@ const postWeather=async(url='', data={})=>{
         const apiTemp=await response.json();
         console.log('Data received:', apiTemp);
         return apiTemp;
+    }catch(error){
+        console.log('error',error);
+    }
+}
+
+/* Function to POST pixData */
+const postPix=async(url='', data={})=>{
+    const response=await fetch(url, {
+    method:'POST',
+    credentials:'same-origin',
+    headers:{'Content-Type':'application/json; charset=UTF-8'},
+    body: JSON.stringify(data),
+    })
+    try{
+        const apiPix=await response.json();
+        console.log('Data received:');
+        return apiPix;
     }catch(error){
         console.log('error',error);
     }
@@ -82,18 +99,17 @@ const updateUI=async()=>{
     }
 }
 
-const uploadPix=async()=>{
+/*const uploadPix=async()=>{
     const request=await fetch('http://localhost:8001/pix');
     try{
         const newPix=await request.json();
-        document.getElementById('dest_picture').innerHTML='Destination picture: '+newPix.;
     }catch(error){
         console.log('error',error);
     }
-}
+}*/
 
 export { performAction }
 export { postGeo }
 export { postWeather }
+export { postPix }
 export { updateUI }
-export { uploadPix }
