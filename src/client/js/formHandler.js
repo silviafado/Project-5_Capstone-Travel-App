@@ -1,6 +1,4 @@
 /* Global Variables */
-import fetch from "node-fetch";
-import { ProvidePlugin } from "webpack";
 
 /* Create a new date instance dynamically with JS */
 let d = new Date();
