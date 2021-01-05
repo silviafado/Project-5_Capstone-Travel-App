@@ -82,26 +82,26 @@ async function addTemp(req, res) {
     let geoToProcess = req.body.geoData;
     // Calculate time difference for later use
     let d = new Date();
-    let today = d.getFullYear()+'-'+d.getMonth()+'-'+d.getDate();
-    let trip = new Date (dateToProcess);
-    let tripDate = trip.getFullYear()+'-'+trip.getMonth()+'-'+trip.getDate();
-    let x = tripDate.getTime() - today.getTime()/(1000*3600*24);
+    let trip = new Date (dateToProcess); 
+    let x = [trip.getTime() - d.getTime()]/86400000;
     console.log(x);
+    let y = x.toFixed(0)-1;
+    console.log(y);
     const urlWeatherbit = `http://api.weatherbit.io/v2.0/forecast/daily?&lat=${geoData.latitude}&lon=${geoData.longitude}&key=${apiWeatherbit}`;
     const tempResult = await fetch(urlWeatherbit);
     try {
         const apiTemp = await tempResult.json();
         console.log(apiTemp);
         tempData={
-            "date":apiTemp.data[x].valid_date,
+            "date":apiTemp.data[y].valid_date,
             "city":apiTemp.city_name,
             "country":apiTemp.country_code,
-            "temp":apiTemp.data[x].temp,
-            "max_temp":apiTemp.data[x].max_temp,
-            "min_temp":apiTemp.data[x].min_temp,
-            "wind_dir":apiTemp.data[x].wind_dir,
-            "wind_speed":apiTemp.data[x].wind_spd,
-            "precipitation":apiTemp.data[x].pop,
+            "temp":apiTemp.data[y].temp,
+            "max_temp":apiTemp.data[y].max_temp,
+            "min_temp":apiTemp.data[y].min_temp,
+            "wind_dir":apiTemp.data[y].wind_dir,
+            "wind_speed":apiTemp.data[y].wind_spd,
+            "precipitation":apiTemp.data[y].pop,
         };
         console.log(tempData);
         res.send(tempData);

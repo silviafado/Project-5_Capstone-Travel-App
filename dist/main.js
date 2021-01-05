@@ -1,17 +1,16 @@
 var Client;Client =
 /******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
 /***/ 70:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 // ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
 
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, {
-  "differenceInTime": () => /* reexport */ tripDate.differenceInTime,
   "performAction": () => /* reexport */ performAction,
   "postGeo": () => /* reexport */ postGeo,
   "postPix": () => /* reexport */ postPix,
@@ -135,10 +134,7 @@ const updatePix=async()=>{
 
 
 
-// EXTERNAL MODULE: ./src/client/js/tripDate.js
-var tripDate = __webpack_require__(456);
 ;// CONCATENATED MODULE: ./src/client/index.js
-
 
 
 
@@ -148,22 +144,6 @@ var tripDate = __webpack_require__(456);
 
 alert("Welcome to Travel App :)")
 console.log("Hello!!");
-
-/***/ }),
-
-/***/ 456:
-/***/ (() => {
-
-// Calculate time difference today - departure day for weather forecast
-function differenceInTime (){
-    const todayDate = new Date();
-    let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
-    const tripDate = formDeparture;
-    let timeDif = tripDate - todayDate;
-    console.log(timeDif);
-}    
-
-
 
 /***/ })
 
