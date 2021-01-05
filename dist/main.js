@@ -1,29 +1,27 @@
 var Client;Client =
 /******/ (() => { // webpackBootstrap
-/******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
 /***/ 70:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 // ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
 
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, {
+  "differenceInTime": () => /* reexport */ tripDate.differenceInTime,
   "performAction": () => /* reexport */ performAction,
   "postGeo": () => /* reexport */ postGeo,
   "postPix": () => /* reexport */ postPix,
   "postWeather": () => /* reexport */ postWeather,
+  "updatePix": () => /* reexport */ updatePix,
   "updateUI": () => /* reexport */ updateUI
 });
 
 ;// CONCATENATED MODULE: ./src/client/js/formHandler.js
 /* Global Variables */
-
-/* Create a new date instance dynamically with JS */
-let d = new Date();
-let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
 
 /* Event listener to add function to existing HTML DOM element */
 const generate=document.getElementById('performAction').addEventListener('click', performAction);
@@ -40,10 +38,9 @@ function performAction(event){
         postPix('http://localhost:8001/addPix', {formDestination}) 
         .then (() => {
         updateUI()
-        })
-   
-        })
-    })
+        .then (() => {
+        updatePix()    
+        })})})})
 }
 
 /* Function to POST geoData */
@@ -84,6 +81,7 @@ const postWeather=async(url='', data={})=>{
 
 /* Function to POST pixData */
 const postPix=async(url='', data={})=>{
+    console.log(data)
     const response=await fetch(url, {
     method:'POST',
     credentials:'same-origin',
@@ -92,7 +90,7 @@ const postPix=async(url='', data={})=>{
     })
     try{
         const apiPix=await response.json();
-        console.log('Data received:');
+        console.log('Data received:', apiPix);
         return apiPix;
     }catch(error){
         console.log('error',error);
@@ -111,21 +109,23 @@ const updateUI=async()=>{
         document.getElementById('max_temp').innerHTML='Maximum temperature in ºC: '+newEntry.max_temp;
         document.getElementById('min_temp').innerHTML='Minimum temperature in ºC: '+newEntry.min_temp;
         document.getElementById('wind_dir').innerHTML='Wind direction in degrees: '+newEntry.wind_dir;
-        document.getElementById('wind_speed').innerHTML='Wind speed in m/s: '+newEntry.wind_speed;
+        document.getElementById('wind_speed').innerHTML='Wind speed in m/s: '+newEntry.wind_speed.toFixed(2);
         document.getElementById('precipitation').innerHTML='Probability of Precipitation (%): '+newEntry.precipitation;
     }catch(error){
         console.log('error',error);
     }
 }
 
-/*const uploadPix=async()=>{
+/*Function to update User Interface*/
+const updatePix=async()=>{
     const request=await fetch('http://localhost:8001/pix');
     try{
-        const newPix=await request.json();
+        const newPicture=await request.json();
+        document.getElementById('dest_picture').setAttribute("src", newPicture.picture);
     }catch(error){
         console.log('error',error);
     }
-}*/
+}
 
 
 
@@ -133,7 +133,12 @@ const updateUI=async()=>{
 
 
 
+
+
+// EXTERNAL MODULE: ./src/client/js/tripDate.js
+var tripDate = __webpack_require__(456);
 ;// CONCATENATED MODULE: ./src/client/index.js
+
 
 
 
@@ -143,6 +148,22 @@ const updateUI=async()=>{
 
 alert("Welcome to Travel App :)")
 console.log("Hello!!");
+
+/***/ }),
+
+/***/ 456:
+/***/ (() => {
+
+// Calculate time difference today - departure day for weather forecast
+function differenceInTime (){
+    const todayDate = new Date();
+    let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
+    const tripDate = formDeparture;
+    let timeDif = tripDate - todayDate;
+    console.log(timeDif);
+}    
+
+
 
 /***/ })
 

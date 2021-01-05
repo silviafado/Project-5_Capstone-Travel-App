@@ -80,21 +80,28 @@ app.post('/addTemp', addTemp);
 async function addTemp(req, res) {
     let dateToProcess = req.body.formDeparture;
     let geoToProcess = req.body.geoData;
+    // Calculate time difference for later use
+    let d = new Date();
+    let today = d.getFullYear()+'-'+d.getMonth()+'-'+d.getDate();
+    let trip = new Date (dateToProcess);
+    let tripDate = trip.getFullYear()+'-'+trip.getMonth()+'-'+trip.getDate();
+    let x = tripDate.getTime() - today.getTime()/(1000*3600*24);
+    console.log(x);
     const urlWeatherbit = `http://api.weatherbit.io/v2.0/forecast/daily?&lat=${geoData.latitude}&lon=${geoData.longitude}&key=${apiWeatherbit}`;
     const tempResult = await fetch(urlWeatherbit);
     try {
         const apiTemp = await tempResult.json();
         console.log(apiTemp);
         tempData={
-            "date":apiTemp.data[0].valid_date,
+            "date":apiTemp.data[x].valid_date,
             "city":apiTemp.city_name,
             "country":apiTemp.country_code,
-            "temp":apiTemp.data[0].temp,
-            "max_temp":apiTemp.data[0].max_temp,
-            "min_temp":apiTemp.data[0].min_temp,
-            "wind_dir":apiTemp.data[0].wind_dir,
-            "wind_speed":apiTemp.data[0].wind_spd,
-            "precipitation":apiTemp.data[0].pop,
+            "temp":apiTemp.data[x].temp,
+            "max_temp":apiTemp.data[x].max_temp,
+            "min_temp":apiTemp.data[x].min_temp,
+            "wind_dir":apiTemp.data[x].wind_dir,
+            "wind_speed":apiTemp.data[x].wind_spd,
+            "precipitation":apiTemp.data[x].pop,
         };
         console.log(tempData);
         res.send(tempData);
@@ -108,7 +115,7 @@ app.get('/pix', getPix);
 
 /* Callback function to complete GET '/pix' */
 function getPix(req,res){
-    res.send(pix)
+    res.send(pixData);
 };
 
 /* POST route */
@@ -119,9 +126,14 @@ async function addPix(req, res) {
     let city = req.body.formDestination;
     const urlPixabay = `https://pixabay.com/api/?key=${apiPixabay}&q=${city}&image_type=photo&orientation=horizontal&category=travel&pretty=true`;
     const pixResult = await fetch(urlPixabay);
-    console.log('Pixabay API: ', response.status, response.statusText, response.ok);
     try {
-        return pixResult.json();
+        const apiPix = await pixResult.json();
+        console.log (apiPix);
+        pixData={
+            "picture":apiPix.hits[0].webformatURL,
+        }
+        console.log(pixData);
+        res.send(pixData);
     } catch (error) {
         console.log('ERROR: Could not get image from pixabay' + error);
     }

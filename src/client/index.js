@@ -1,5 +1,6 @@
 
-import { performAction, postGeo, postWeather, postPix, updateUI } from './js/formHandler'
+import { performAction, postGeo, postWeather, postPix, updateUI, updatePix } from './js/formHandler'
+import { differenceInTime } from './js/tripDate'
 
 import './styles/style.scss'
 
@@ -8,7 +9,9 @@ export {
     postGeo,
     postWeather,
     postPix,
-    updateUI
+    updateUI,
+    updatePix,
+    differenceInTime
 }
 
 alert("Welcome to Travel App :)")
