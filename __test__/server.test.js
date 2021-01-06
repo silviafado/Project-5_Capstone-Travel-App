@@ -1,11 +1,10 @@
-const app = require("./../src/server/server");
-const fetch = require('node-fetch')
 
-describe("Testing the submit functionality", () => {
-    test('Testing the handleSubmit() function', () => {
-    const cityToAnal= 'Barcelona';   
-        const newLocal = 'http://localhost:8001/addEntry';
-    return addEntry (newLocal, {formDestination: cityToAnal}).then(geoData => {
-        expect(geoData.city).toBe('Barcelona');
-    })});
-});
+const app = require("./../src/server/server"); // Link to your server file
+const supertest = require("supertest");
+const request = supertest(app);
+
+describe("Test API endpoints", () => {
+    test("GET / -> Successfuly render index.html", async () => {
+      const response = await request.get("/").expect(200);
+    });
+  });
