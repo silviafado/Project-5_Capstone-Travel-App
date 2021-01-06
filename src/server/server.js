@@ -85,7 +85,7 @@ async function addTemp(req, res) {
     let trip = new Date (dateToProcess); 
     let x = [trip.getTime() - d.getTime()]/86400000;
     console.log(x);
-    let y = x.toFixed(0)-1;
+    let y = x.toFixed(0);
     console.log(y);
     const urlWeatherbit = `http://api.weatherbit.io/v2.0/forecast/daily?&lat=${geoData.latitude}&lon=${geoData.longitude}&key=${apiWeatherbit}`;
     const tempResult = await fetch(urlWeatherbit);
