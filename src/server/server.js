@@ -32,7 +32,7 @@ app.get('/', function (req, res) {
     res.sendFile('dist/index.html')
 });
 
-// designates what port the app will listen to for incoming requests
+// Designates what port the app will listen to for incoming requests
 app.listen(8001, function () {
     console.log('Example app listening on port 8001!')
 });
@@ -41,15 +41,21 @@ app.listen(8001, function () {
 geoData={};
 tempData={};
 
-/* Initialize data route with a callback function */
+// Initialize GET routes with a callback function
+/* GET route for weatherbit.io */
 app.get('/data', getData);
-
 /* Callback function to complete GET '/data' */
 function getData(req,res){
     res.send(tempData)
 };
+/* GET route for pixabay.com */
+app.get('/pix', getPix);
+/* Callback function to complete GET '/pix' */
+function getPix(req,res){
+    res.send(pixData);
+};
 
-/* POST route */
+/* POST route for geonames.org */
 app.post('/addEntry', addEntry);
 
 // Async function for API call to geonames.org
@@ -59,7 +65,6 @@ async function addEntry(req, res) {
     const geoResult = await fetch(urlGeonames);
     try {
         const apiData = await geoResult.json();
-        console.log(apiData);
         geoData={
             "latitude":apiData.geonames[0].lat,
             "longitude":apiData.geonames[0].lng,
@@ -73,35 +78,30 @@ async function addEntry(req, res) {
     }
 }
 
-/* POST route */
+/* POST route for weatherbit.io */
 app.post('/addTemp', addTemp);
 
 // Async function for API call to weatherbit.io
 async function addTemp(req, res) {
     let dateToProcess = req.body.formDeparture;
-    let geoToProcess = req.body.geoData;
-    // Calculate time difference for later use
+    /* Calculate time difference for later use */
     let d = new Date();
     let trip = new Date (dateToProcess); 
-    let x = [trip.getTime() - d.getTime()]/86400000;
-    console.log(x);
-    let y = x.toFixed(0);
-    console.log(y);
+    let x = trip.getDate() - d.getDate();
     const urlWeatherbit = `http://api.weatherbit.io/v2.0/forecast/daily?&lat=${geoData.latitude}&lon=${geoData.longitude}&key=${apiWeatherbit}`;
     const tempResult = await fetch(urlWeatherbit);
     try {
         const apiTemp = await tempResult.json();
-        console.log(apiTemp);
         tempData={
-            "date":apiTemp.data[y].valid_date,
+            "date":apiTemp.data[x].valid_date,
             "city":apiTemp.city_name,
             "country":apiTemp.country_code,
-            "temp":apiTemp.data[y].temp,
-            "max_temp":apiTemp.data[y].max_temp,
-            "min_temp":apiTemp.data[y].min_temp,
-            "wind_dir":apiTemp.data[y].wind_dir,
-            "wind_speed":apiTemp.data[y].wind_spd,
-            "precipitation":apiTemp.data[y].pop,
+            "temp":apiTemp.data[x].temp,
+            "max_temp":apiTemp.data[x].max_temp,
+            "min_temp":apiTemp.data[x].min_temp,
+            "wind_dir":apiTemp.data[x].wind_dir,
+            "wind_speed":apiTemp.data[x].wind_spd,
+            "precipitation":apiTemp.data[x].pop,
         };
         console.log(tempData);
         res.send(tempData);
@@ -110,15 +110,7 @@ async function addTemp(req, res) {
     }
 }
 
-/* Initialize pix route with a callback function */
-app.get('/pix', getPix);
-
-/* Callback function to complete GET '/pix' */
-function getPix(req,res){
-    res.send(pixData);
-};
-
-/* POST route */
+/* POST route for pixabay.com */
 app.post('/addPix', addPix);
 
 // Async function for API call to geonames.org
@@ -128,7 +120,6 @@ async function addPix(req, res) {
     const pixResult = await fetch(urlPixabay);
     try {
         const apiPix = await pixResult.json();
-        console.log (apiPix);
         pixData={
             "picture":apiPix.hits[0].webformatURL,
         }
@@ -138,4 +129,3 @@ async function addPix(req, res) {
         console.log('ERROR: Could not get image from pixabay' + error);
     }
 }
-

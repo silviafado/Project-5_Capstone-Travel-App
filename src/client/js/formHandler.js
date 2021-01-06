@@ -1,9 +1,7 @@
-/* Global Variables */
-
-/* Event listener to add function to existing HTML DOM element */
+// Event listener to add function to existing HTML DOM element
 const generate=document.getElementById('performAction').addEventListener('click', performAction);
 
-/* Function called by event listener */
+// Function called by event listener
 function performAction(event){
     event.preventDefault()
     let formDestination=document.getElementById('destinationInput').value;
@@ -20,7 +18,7 @@ function performAction(event){
         })})})})
 }
 
-/* Function to POST geoData */
+// Function to POST geoData
 const postGeo=async(url='', data={})=>{
     console.log(data)
     const response=await fetch(url, {
@@ -38,7 +36,7 @@ const postGeo=async(url='', data={})=>{
     }
 }
 
-/* Function to POST tempData */
+// Function to POST tempData
 const postWeather=async(url='', data={})=>{
     console.log(data)
     const response=await fetch(url, {
@@ -56,7 +54,7 @@ const postWeather=async(url='', data={})=>{
     }
 }
 
-/* Function to POST pixData */
+// Function to POST pixData
 const postPix=async(url='', data={})=>{
     console.log(data)
     const response=await fetch(url, {
@@ -74,7 +72,7 @@ const postPix=async(url='', data={})=>{
     }
 }
 
-/*Function to update User Interface*/
+// Function to update User Interface
 const updateUI=async()=>{
     const request=await fetch('http://localhost:8001/data');
     try{
@@ -93,7 +91,7 @@ const updateUI=async()=>{
     }
 }
 
-/*Function to update User Interface*/
+// Function to upload picture on User Interface
 const updatePix=async()=>{
     const request=await fetch('http://localhost:8001/pix');
     try{
