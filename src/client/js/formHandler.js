@@ -1,6 +1,3 @@
-// Event listener to add function to existing HTML DOM element
-const generate=document.getElementById('performAction').addEventListener('click', performAction);
-
 // Function called by event listener
 function performAction(event){
     event.preventDefault()

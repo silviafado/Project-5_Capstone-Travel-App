@@ -20,9 +20,6 @@ __webpack_require__.d(__webpack_exports__, {
 });
 
 ;// CONCATENATED MODULE: ./src/client/js/formHandler.js
-// Event listener to add function to existing HTML DOM element
-const generate=document.getElementById('performAction').addEventListener('click', performAction);
-
 // Function called by event listener
 function performAction(event){
     event.preventDefault()

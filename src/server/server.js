@@ -129,3 +129,5 @@ async function addPix(req, res) {
         console.log('ERROR: Could not get image from pixabay' + error);
     }
 }
+
+module.exports = app

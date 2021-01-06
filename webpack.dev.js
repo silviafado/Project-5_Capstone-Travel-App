@@ -2,16 +2,6 @@ const path = require('path')
 const webpack = require('webpack')
 const HtmlWebPackPlugin = require("html-webpack-plugin")
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const buffer = require ('buffer')
-const vm = require('vm');
-const http = require('http');
-const https = require('https');
-const assert = require('assert');
-const stream = require ('stream-browserify');
-const os = require('os');
-const worker = require('worker_threads');
-const fs = require('fs');
-const child = require('child_process');
 
 module.exports = {
     entry: './src/client/index.js',
@@ -21,22 +11,7 @@ module.exports = {
         libraryTarget: 'var',
         library: 'Client'
     },
-    stats: 'verbose',
-    resolve: {
-        fallback: {
-            util: require.resolve('util/'),
-            path: require.resolve('path-browserify'),
-            buffer: false,
-            crypto: false,
-            vm: require.resolve('vm-browserify'),
-            stream: require.resolve('stream-browserify'),
-            https: require.resolve('https-browserify'),
-            http: require.resolve('http-browserify'),
-            os: require.resolve('os-browserify/browser'),
-            constants: require.resolve('constants-browserify')
-        },
-        aliasFields: ['browser', 'browser.esm'], 
-    },  
+    stats: 'verbose', 
     module: {
         rules: [
             {
