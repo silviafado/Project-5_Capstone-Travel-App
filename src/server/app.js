@@ -27,7 +27,7 @@ router.post('/addEntry', addEntry);
 
 // Async function for API call to geonames.org
 async function addEntry(req, res) {
-    let cityToProcess = req.body.formDestination;
+    const cityToProcess = req.body.formDestination;
     const urlGeonames = `http://api.geonames.org/search?username=${apiGeonames}&type=json&name_equals=${cityToProcess}`;
     const geoResult = await fetch(urlGeonames);
     try {
@@ -50,11 +50,13 @@ router.post('/addTemp', addTemp);
 
 // Async function for API call to weatherbit.io
 async function addTemp(req, res) {
-    let dateToProcess = req.body.formDeparture;
     /* Calculate time difference for later use */
     let d = new Date();
-    let trip = new Date (dateToProcess); 
-    let x = trip.getDate() - d.getDate();
+    let depart = new Date (req.body.formDeparture); 
+    let retur = new Date (req.body.formReturn);
+    let x = depart.getDate() - d.getDate();
+    let y = retur.getDate() - depart.getDate();
+    /* API call */
     const urlWeatherbit = `http://api.weatherbit.io/v2.0/forecast/daily?&lat=${geoData.latitude}&lon=${geoData.longitude}&key=${apiWeatherbit}`;
     const tempResult = await fetch(urlWeatherbit);
     try {
@@ -69,6 +71,7 @@ async function addTemp(req, res) {
             "wind_dir":apiTemp.data[x].wind_dir,
             "wind_speed":apiTemp.data[x].wind_spd,
             "precipitation":apiTemp.data[x].pop,
+            "duration":y,
         };
         console.log(tempData);
         res.send(tempData);

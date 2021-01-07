@@ -3,7 +3,7 @@ var Client;Client =
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 70:
+/***/ 83:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 // ESM COMPAT FLAG
@@ -11,10 +11,12 @@ __webpack_require__.r(__webpack_exports__);
 
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, {
+  "endDate": () => /* reexport */ endDate,
   "performAction": () => /* reexport */ performAction,
   "postGeo": () => /* reexport */ postGeo,
   "postPix": () => /* reexport */ postPix,
   "postWeather": () => /* reexport */ postWeather,
+  "todayDate": () => /* reexport */ todayDate,
   "updatePix": () => /* reexport */ updatePix,
   "updateUI": () => /* reexport */ updateUI
 });
@@ -23,11 +25,12 @@ __webpack_require__.d(__webpack_exports__, {
 // Function called by event listener
 function performAction(event){
     event.preventDefault()
-    let formDestination=document.getElementById('destinationInput').value;
+    const formDestination=document.getElementById('destinationInput').value;
     const formDeparture=document.getElementById('startDate').value;
+    const formReturn=document.getElementById('endDate').value;
         postGeo('http://localhost:8001/addEntry', {formDestination})
         .then (() => {
-        postWeather('http://localhost:8001/addTemp', {formDeparture})   
+        postWeather('http://localhost:8001/addTemp', {formDeparture, formReturn})   
         .then (() => {
         postPix('http://localhost:8001/addPix', {formDestination}) 
         .then (() => {
@@ -105,6 +108,7 @@ const updateUI=async()=>{
         document.getElementById('wind_dir').innerHTML='Wind direction in degrees: '+newEntry.wind_dir;
         document.getElementById('wind_speed').innerHTML='Wind speed in m/s: '+newEntry.wind_speed.toFixed(2);
         document.getElementById('precipitation').innerHTML='Probability of Precipitation (%): '+newEntry.precipitation;
+        document.getElementById('trip_duration').innerHTML='Duration of the trip: '+newEntry.duration;
     }catch(error){
         console.log('error',error);
     }
@@ -129,7 +133,14 @@ const updatePix=async()=>{
 
 
 
+;// CONCATENATED MODULE: ./src/client/js/helpers.js
+const todayDate = document.getElementById('startDate').valueAsDate = new Date();
+const endDate = document.getElementById('endDate').valueAsDate = new Date();
+
+
+
 ;// CONCATENATED MODULE: ./src/client/index.js
+
 
 
 
@@ -200,6 +211,6 @@ console.log("Hello!!");
 /******/ 	// module exports must be returned from runtime so entry inlining is disabled
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(70);
+/******/ 	return __webpack_require__(83);
 /******/ })()
 ;

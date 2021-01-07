@@ -1,11 +1,12 @@
 // Function called by event listener
 function performAction(event){
     event.preventDefault()
-    let formDestination=document.getElementById('destinationInput').value;
+    const formDestination=document.getElementById('destinationInput').value;
     const formDeparture=document.getElementById('startDate').value;
+    const formReturn=document.getElementById('endDate').value;
         postGeo('http://localhost:8001/addEntry', {formDestination})
         .then (() => {
-        postWeather('http://localhost:8001/addTemp', {formDeparture})   
+        postWeather('http://localhost:8001/addTemp', {formDeparture, formReturn})   
         .then (() => {
         postPix('http://localhost:8001/addPix', {formDestination}) 
         .then (() => {
@@ -83,6 +84,7 @@ const updateUI=async()=>{
         document.getElementById('wind_dir').innerHTML='Wind direction in degrees: '+newEntry.wind_dir;
         document.getElementById('wind_speed').innerHTML='Wind speed in m/s: '+newEntry.wind_speed.toFixed(2);
         document.getElementById('precipitation').innerHTML='Probability of Precipitation (%): '+newEntry.precipitation;
+        document.getElementById('trip_duration').innerHTML='Duration of the trip: '+newEntry.duration+' days';
     }catch(error){
         console.log('error',error);
     }
