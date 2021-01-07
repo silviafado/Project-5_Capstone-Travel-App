@@ -108,7 +108,7 @@ const updateUI=async()=>{
         document.getElementById('wind_dir').innerHTML='Wind direction in degrees: '+newEntry.wind_dir;
         document.getElementById('wind_speed').innerHTML='Wind speed in m/s: '+newEntry.wind_speed.toFixed(2);
         document.getElementById('precipitation').innerHTML='Probability of Precipitation (%): '+newEntry.precipitation;
-        document.getElementById('trip_duration').innerHTML='Duration of the trip: '+newEntry.duration;
+        document.getElementById('trip_duration').innerHTML='Duration of the trip: '+newEntry.duration+' days';
     }catch(error){
         console.log('error',error);
     }
