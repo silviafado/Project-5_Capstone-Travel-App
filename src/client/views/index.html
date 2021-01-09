@@ -52,9 +52,9 @@
         </div>
         <div class="holder dates">
           <label id="dateLabel1" type="text">Departure date</label>
-          <input type="date" id="startDate" name="trip-start" value="2021-01-01" min="2021-01-01" max="2021-12-31" required>
+          <input type="date" id="startDate" name="trip-start" value="" min="2021-01-01" max="2021-12-31" onchange="return Client.controller(event)">
           <label id="dateLabel2" type="text">Return date</label>
-          <input type="date" id="endDate" name="trip-end" value="2021-01-01" min="2021-01-01" max="2021-12-31" required>
+          <input type="date" id="endDate" name="trip-end" value="" min="2021-01-01" max="2021-12-31" onchange="return Client.controller2(event)">
         </div>
         <div class="button">
           <button id="performAction" type = "submit" name="check" value="" onclick="return Client.performAction(event)" onsubmit="return Client.performAction(event)">Search</button>
@@ -63,7 +63,7 @@
       </section>
       <section>
         <div class ="holder entry">
-          <div class = "title">Your destination forecast</div>
+          <div class = "title">Your destination forecast:</div>
           <div id = "entryHolder" rows="10" columns="50">
             <div id = "date"></div> 
             <div id = "destination"></div>
@@ -79,14 +79,14 @@
           </div>
         </div>
         <div id="picture">
-          <img id="dest_picture" src="" alt="destination image">
+          <img id="dest_picture" src="" alt="Destination image">
         </div>
       </section>
     </main>
 
     <footer>
       <p>This is a footer</p>
-      <div class="logos">
+      <div class="logos">APIs used:
         <a href="https://www.geonames.org" target="_blank">
           <img id="logo_geonames" src="../assets/images/logo_geonames.png">
         </a>

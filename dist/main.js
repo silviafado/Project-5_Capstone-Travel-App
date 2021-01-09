@@ -11,6 +11,10 @@ __webpack_require__.r(__webpack_exports__);
 
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, {
+  "control1": () => /* reexport */ control1,
+  "control2": () => /* reexport */ control2,
+  "controller": () => /* reexport */ controller,
+  "controller2": () => /* reexport */ controller2,
   "currentSlide": () => /* reexport */ currentSlide,
   "endDate": () => /* reexport */ endDate,
   "performAction": () => /* reexport */ performAction,
@@ -19,6 +23,7 @@ __webpack_require__.d(__webpack_exports__, {
   "postPix": () => /* reexport */ postPix,
   "postWeather": () => /* reexport */ postWeather,
   "showSlides": () => /* reexport */ showSlides,
+  "startDate": () => /* reexport */ startDate,
   "todayDate": () => /* reexport */ todayDate,
   "updatePix": () => /* reexport */ updatePix,
   "updateUI": () => /* reexport */ updateUI
@@ -137,8 +142,36 @@ const updatePix=async()=>{
 
 
 ;// CONCATENATED MODULE: ./src/client/js/helpers.js
-const todayDate = document.getElementById('startDate').valueAsDate = new Date();
+const todayDate = new Date();
+const startDate = document.getElementById('startDate').valueAsDate = new Date();
 const endDate = document.getElementById('endDate').valueAsDate = new Date();
+
+const control1 = document.getElementById('startDate').addEventListener('change', controller);
+const control2 = document.getElementById('endDate').addEventListener('change', controller2);
+
+
+function controller(e){
+    if(startDate < todayDate){
+        alert('You should enter a date grater than today!');
+    }
+    else if (startDate > todayDate+16){
+        alert ('Forecast is only available for 16 days.');
+    }
+}        
+
+function controller2 (e){
+    if(endDate < startDate){
+        alert('Return date should be after departure date.');
+        endDate = null;
+    }
+}
+
+
+
+
+
+
+
 
 
 

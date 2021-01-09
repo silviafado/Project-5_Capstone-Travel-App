@@ -1,6 +1,6 @@
 
 import { performAction, postGeo, postWeather, postPix, updateUI, updatePix } from './js/formHandler';
-import { todayDate, endDate } from './js/helpers'
+import { todayDate, startDate, endDate, control1, control2, controller, controller2 } from './js/helpers'
 import { showSlides, plusSlides, currentSlide } from './js/slides'
 
 import './styles/style.scss'
@@ -13,8 +13,13 @@ export {
     postPix,
     updateUI,
     updatePix,
+    startDate,
     todayDate,
     endDate,
+    control1,
+    control2,
+    controller,
+    controller2,
     showSlides,
     plusSlides,
     currentSlide,
