@@ -1,0 +1,12 @@
+@media (max-width: 900px){
+    #form{
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: 70px 70px 70px;
+    grid-gap: 20px;
+    grid-template-areas: 
+    "nest1 nest2"
+    "nest3 nest4"
+    "button button"; 
+    }
+}    

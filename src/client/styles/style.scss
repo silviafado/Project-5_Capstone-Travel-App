@@ -1,19 +1,20 @@
 body{
     font-family: 'Oswald', sans-serif;
-    background-color: rgb(189, 184, 184);
+    background-color: white;
 }
 
 #form{
     display: grid;
-    grid-template-rows: 100px;
-    grid-template-columns: auto auto auto auto auto;
+    grid-template-rows: 70px;
+    grid-template-columns: auto auto 180px 180px auto;
     padding-top: 10px;
     padding-right: 15px;
     padding-bottom: 20px;
     padding-left: 15px;
-    background-color: white;
-    color: rgb(71, 67, 67);
+    background-color: rgb(189, 184, 184);
+    color: #919191;
     font-size: 20px;
+    border-radius: 5px;
     grid-template-areas:
     "nest1 nest2 nest3 nest4 button";
 }
@@ -21,16 +22,18 @@ body{
 .nestedGrid{
     display: grid;
     grid-template-columns: 100%;
-    grid-template-rows: 20px 100px;
+    grid-template-rows: 20px 50px;
 }
 
-.entry{
-    background: rgba(3, 81, 248, 0.4);
+.holder_entry {
+    background: rgb(250, 251, 252);
     border-radius: 5px;
     padding: 10px;
+    border-color: black;
+    border-width: 1px;
 }
 
-.headline {
+h1 {
     font-size: 30px;
     font-weight: bold;
 }
@@ -43,11 +46,14 @@ body{
 /*  Basic Styling To Override Default For Basic HTML Elements */
 label{
     display:block;
+    padding-left: 10px;
     font-size: 10px;
+    background-color: white;
 }
 
 input, textarea{
     background: white;
+    padding-left: 10px;
     color:  rgb(71, 67, 67);;
     font-size: 20px;
     font-family: 'Oswald', sans-serif;
@@ -55,8 +61,14 @@ input, textarea{
     border: none;
 }
 
+input{
+    padding-right: 30px;
+}
+
 button{
     display: block;
+    width: 80%;
+    padding-left: 15px;
     height: 50px;
     background:  rgb(51, 48, 48);;
     color: white;
@@ -66,10 +78,22 @@ button{
     box-shadow: 2px 4px 5px rgb(29, 29, 29);
 }
 
-h1{
-    font-size: 36px;
+#dest_picture{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    padding: 20px;
 }
 
+footer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    padding-left: 10%;
+    padding-right: 10%;
+  }
 
 
 /* Reset style for HTML element on active to have no border*/

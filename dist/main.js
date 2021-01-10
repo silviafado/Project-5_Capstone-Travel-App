@@ -6,28 +6,49 @@ var Client;Client =
 /***/ 525:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-module.exports = __webpack_require__.p + "44dedf10ab048affca1f.jpg";
+module.exports = __webpack_require__.p + "b3a4090106173360603b.jpg";
 
 /***/ }),
 
 /***/ 982:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-module.exports = __webpack_require__.p + "60e12d72799d19301dbf.jpg";
+module.exports = __webpack_require__.p + "9b1c10228018f1bf0033.jpg";
 
 /***/ }),
 
 /***/ 214:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-module.exports = __webpack_require__.p + "bc94de424ac893816c71.jpg";
+module.exports = __webpack_require__.p + "e4bca6adb26973bc60da.jpg";
 
 /***/ }),
 
 /***/ 100:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-module.exports = __webpack_require__.p + "3f27660d13eb755e223b.jpg";
+module.exports = __webpack_require__.p + "2b9afab5befb2958aea3.jpg";
+
+/***/ }),
+
+/***/ 808:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "016fcf697e60a69423f9.jpg";
+
+/***/ }),
+
+/***/ 666:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "78baf6fff4804961d7b5.jpg";
+
+/***/ }),
+
+/***/ 544:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "d9442cb3530bb5fefffe.jpg";
 
 /***/ }),
 
@@ -265,6 +286,12 @@ var _2 = __webpack_require__(982);
 var _3 = __webpack_require__(214);
 // EXTERNAL MODULE: ./src/client/assets/images/4.jpg
 var _4 = __webpack_require__(100);
+// EXTERNAL MODULE: ./src/client/assets/images/5.jpg
+var _5 = __webpack_require__(808);
+// EXTERNAL MODULE: ./src/client/assets/images/6.jpg
+var _6 = __webpack_require__(666);
+// EXTERNAL MODULE: ./src/client/assets/images/7.jpg
+var _7 = __webpack_require__(544);
 // EXTERNAL MODULE: ./src/client/assets/images/logo_geonames.png
 var logo_geonames = __webpack_require__(739);
 // EXTERNAL MODULE: ./src/client/assets/images/logo_weatherbit.png
@@ -272,6 +299,10 @@ var logo_weatherbit = __webpack_require__(679);
 // EXTERNAL MODULE: ./src/client/assets/images/logo_pixabay.png
 var logo_pixabay = __webpack_require__(405);
 ;// CONCATENATED MODULE: ./src/client/index.js
+
+
+
+
 
 
 
