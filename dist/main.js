@@ -3,6 +3,55 @@ var Client;Client =
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ 525:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "44dedf10ab048affca1f.jpg";
+
+/***/ }),
+
+/***/ 982:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "60e12d72799d19301dbf.jpg";
+
+/***/ }),
+
+/***/ 214:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "bc94de424ac893816c71.jpg";
+
+/***/ }),
+
+/***/ 100:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "3f27660d13eb755e223b.jpg";
+
+/***/ }),
+
+/***/ 739:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "6d7cac264440c0e2dc3e.png";
+
+/***/ }),
+
+/***/ 405:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "a4644a4ef2cdc210c5b6.png";
+
+/***/ }),
+
+/***/ 679:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "28bb7210b56049721342.png";
+
+/***/ }),
+
 /***/ 202:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -208,7 +257,30 @@ function showSlides(n) {
 
 
 
+// EXTERNAL MODULE: ./src/client/assets/images/1.jpg
+var _1 = __webpack_require__(525);
+// EXTERNAL MODULE: ./src/client/assets/images/2.jpg
+var _2 = __webpack_require__(982);
+// EXTERNAL MODULE: ./src/client/assets/images/3.jpg
+var _3 = __webpack_require__(214);
+// EXTERNAL MODULE: ./src/client/assets/images/4.jpg
+var _4 = __webpack_require__(100);
+// EXTERNAL MODULE: ./src/client/assets/images/logo_geonames.png
+var logo_geonames = __webpack_require__(739);
+// EXTERNAL MODULE: ./src/client/assets/images/logo_weatherbit.png
+var logo_weatherbit = __webpack_require__(679);
+// EXTERNAL MODULE: ./src/client/assets/images/logo_pixabay.png
+var logo_pixabay = __webpack_require__(405);
 ;// CONCATENATED MODULE: ./src/client/index.js
+
+
+
+
+
+
+
+
+
 
 
 
@@ -262,6 +334,18 @@ console.log("Hello!!");
 /******/ 		};
 /******/ 	})();
 /******/ 	
+/******/ 	/* webpack/runtime/global */
+/******/ 	(() => {
+/******/ 		__webpack_require__.g = (function() {
+/******/ 			if (typeof globalThis === 'object') return globalThis;
+/******/ 			try {
+/******/ 				return this || new Function('return this')();
+/******/ 			} catch (e) {
+/******/ 				if (typeof window === 'object') return window;
+/******/ 			}
+/******/ 		})();
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => Object.prototype.hasOwnProperty.call(obj, prop)
@@ -276,6 +360,26 @@ console.log("Hello!!");
 /******/ 			}
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/publicPath */
+/******/ 	(() => {
+/******/ 		var scriptUrl;
+/******/ 		if (__webpack_require__.g.importScripts) scriptUrl = __webpack_require__.g.location + "";
+/******/ 		var document = __webpack_require__.g.document;
+/******/ 		if (!scriptUrl && document) {
+/******/ 			if (document.currentScript)
+/******/ 				scriptUrl = document.currentScript.src
+/******/ 			if (!scriptUrl) {
+/******/ 				var scripts = document.getElementsByTagName("script");
+/******/ 				if(scripts.length) scriptUrl = scripts[scripts.length - 1].src
+/******/ 			}
+/******/ 		}
+/******/ 		// When supporting browsers where an automatic publicPath is not supported you must specify an output.publicPath manually via configuration
+/******/ 		// or pass an empty string ("") and set the __webpack_public_path__ variable from your code to use your own logic.
+/******/ 		if (!scriptUrl) throw new Error("Automatic publicPath is not supported in this browser");
+/******/ 		scriptUrl = scriptUrl.replace(/#.*$/, "").replace(/\?.*$/, "").replace(/\/[^\/]+$/, "/");
+/******/ 		__webpack_require__.p = scriptUrl;
 /******/ 	})();
 /******/ 	
 /************************************************************************/

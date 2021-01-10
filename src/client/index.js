@@ -6,6 +6,15 @@ import { showSlides, plusSlides, currentSlide } from './js/slides'
 import './styles/style.scss'
 import './styles/slides.scss'
 
+import './assets/images/1.jpg'
+import './assets/images/2.jpg'
+import './assets/images/3.jpg'
+import './assets/images/4.jpg'
+import './assets/images/logo_geonames.png'
+import './assets/images/logo_weatherbit.png'
+import './assets/images/logo_pixabay.png'
+
+
 export {
     performAction,
     postGeo,
