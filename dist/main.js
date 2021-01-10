@@ -3,31 +3,52 @@ var Client;Client =
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 806:
+/***/ 525:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-module.exports = __webpack_require__.p + "3f27660d13eb755e223b.jpg";
+module.exports = __webpack_require__.p + "d1f11e10b75486991441.jpg";
 
 /***/ }),
 
-/***/ 881:
+/***/ 982:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-module.exports = __webpack_require__.p + "44dedf10ab048affca1f.jpg";
+module.exports = __webpack_require__.p + "94645b6cb51a3cea58ee.jpg";
 
 /***/ }),
 
-/***/ 675:
+/***/ 214:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-module.exports = __webpack_require__.p + "60e12d72799d19301dbf.jpg";
+module.exports = __webpack_require__.p + "52a553049ebece8aa5c1.jpg";
 
 /***/ }),
 
-/***/ 530:
+/***/ 100:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-module.exports = __webpack_require__.p + "bc94de424ac893816c71.jpg";
+module.exports = __webpack_require__.p + "f8ed88fdb9340b9d5585.jpg";
+
+/***/ }),
+
+/***/ 808:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "1f4735e273d96fe73d4f.jpg";
+
+/***/ }),
+
+/***/ 666:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "dd88caab7a04ba22ef1c.jpg";
+
+/***/ }),
+
+/***/ 544:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "c59338d58844efdee0c5.jpg";
 
 /***/ }),
 
@@ -227,14 +248,20 @@ function showSlides(n) {
 
 
 
-// EXTERNAL MODULE: ./src/client/assets/images/44dedf10ab048affca1f.jpg
-var _44dedf10ab048affca1f = __webpack_require__(881);
-// EXTERNAL MODULE: ./src/client/assets/images/60e12d72799d19301dbf.jpg
-var _60e12d72799d19301dbf = __webpack_require__(675);
-// EXTERNAL MODULE: ./src/client/assets/images/bc94de424ac893816c71.jpg
-var bc94de424ac893816c71 = __webpack_require__(530);
-// EXTERNAL MODULE: ./src/client/assets/images/3f27660d13eb755e223b.jpg
-var _3f27660d13eb755e223b = __webpack_require__(806);
+// EXTERNAL MODULE: ./src/client/assets/images/1.jpg
+var _1 = __webpack_require__(525);
+// EXTERNAL MODULE: ./src/client/assets/images/2.jpg
+var _2 = __webpack_require__(982);
+// EXTERNAL MODULE: ./src/client/assets/images/3.jpg
+var _3 = __webpack_require__(214);
+// EXTERNAL MODULE: ./src/client/assets/images/4.jpg
+var _4 = __webpack_require__(100);
+// EXTERNAL MODULE: ./src/client/assets/images/5.jpg
+var _5 = __webpack_require__(808);
+// EXTERNAL MODULE: ./src/client/assets/images/6.jpg
+var _6 = __webpack_require__(666);
+// EXTERNAL MODULE: ./src/client/assets/images/7.jpg
+var _7 = __webpack_require__(544);
 // EXTERNAL MODULE: ./src/client/assets/images/logo_geonames.png
 var logo_geonames = __webpack_require__(739);
 // EXTERNAL MODULE: ./src/client/assets/images/logo_weatherbit.png
@@ -242,6 +269,9 @@ var logo_weatherbit = __webpack_require__(679);
 // EXTERNAL MODULE: ./src/client/assets/images/logo_pixabay.png
 var logo_pixabay = __webpack_require__(405);
 ;// CONCATENATED MODULE: ./src/client/index.js
+
+
+
 
 
 

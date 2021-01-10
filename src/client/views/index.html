@@ -17,16 +17,25 @@
     <div class="slideshow-container">
       <!-- Full-width images with number and caption text -->
       <div class="mySlides fade">
-       <img src="../assets/images/44dedf10ab048affca1f.jpg" style="width:100%">
+       <img src="../assets/images/1.jpg" style="width:100%">
       </div>
       <div class="mySlides fade">
-        <img src="../assets/images/60e12d72799d19301dbf.jpg" style="width:100%">
+        <img src="../assets/images/2.jpg" style="width:100%">
       </div>
       <div class="mySlides fade">
-        <img src="../assets/images/bc94de424ac893816c71.jpg" style="width:100%">
+        <img src="../assets/images/3.jpg" style="width:100%">
       </div>
       <div class="mySlides fade">
-        <img src="../assets/images/3f27660d13eb755e223b.jpg" style="width:100%">
+        <img src="../assets/images/4.jpg" style="width:100%">
+      </div>
+      <div class="mySlides fade">
+        <img src="../assets/images/5.jpg" style="width:100%">
+      </div>
+      <div class="mySlides fade">
+        <img src="../assets/images/6.jpg" style="width:100%">
+      </div>
+      <div class="mySlides fade">
+        <img src="../assets/images/7.jpg" style="width:100%">
       </div>
       <!-- Next and previous buttons -->
       <a class="prev" onclick="Client.plusSlides(-1)">&#10094;</a>
@@ -39,6 +48,9 @@
       <span class="dot" onclick="Client.currentSlide(2)"></span>
       <span class="dot" onclick="Client.currentSlide(3)"></span>
       <span class="dot" onclick="Client.currentSlide(4)"></span>
+      <span class="dot" onclick="Client.currentSlide(5)"></span>
+      <span class="dot" onclick="Client.currentSlide(6)"></span>
+      <span class="dot" onclick="Client.currentSlide(7)"></span>
     </div>
 
     <main>
@@ -54,11 +66,11 @@
           </div>       
           <div class="nestedGrid" id="nest3">
             <label id="dateLabel1" type="text">Departure date</label>
-            <input type="date" id="startDate" name="trip-start" value="" min="2021-01-01" max="2021-12-31" onchange="return Client.controller(event)">   
+            <input type="date" id="startDate" name="trip-start" value="" min="2021-01-01" max="2021-12-31">   
           </div>      
           <div class="nestedGrid" id="nest4"> 
             <label id="dateLabel2" type="text">Return date</label>
-            <input type="date" id="endDate" name="trip-end" value="" min="2021-01-01" max="2021-12-31" onchange="return Client.controller2(event)">
+            <input type="date" id="endDate" name="trip-end" value="" min="2021-01-01" max="2021-12-31">
           </div>
         <div class="button" id="button">
           <button id="performAction" type = "submit" name="check" value="" onclick="return Client.performAction(event)" onsubmit="return Client.performAction(event)">Search</button>
