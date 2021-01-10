@@ -3,52 +3,31 @@ var Client;Client =
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 525:
+/***/ 806:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-module.exports = __webpack_require__.p + "b3a4090106173360603b.jpg";
+module.exports = __webpack_require__.p + "3f27660d13eb755e223b.jpg";
 
 /***/ }),
 
-/***/ 982:
+/***/ 881:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-module.exports = __webpack_require__.p + "9b1c10228018f1bf0033.jpg";
+module.exports = __webpack_require__.p + "44dedf10ab048affca1f.jpg";
 
 /***/ }),
 
-/***/ 214:
+/***/ 675:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-module.exports = __webpack_require__.p + "e4bca6adb26973bc60da.jpg";
+module.exports = __webpack_require__.p + "60e12d72799d19301dbf.jpg";
 
 /***/ }),
 
-/***/ 100:
+/***/ 530:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-module.exports = __webpack_require__.p + "2b9afab5befb2958aea3.jpg";
-
-/***/ }),
-
-/***/ 808:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "016fcf697e60a69423f9.jpg";
-
-/***/ }),
-
-/***/ 666:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "78baf6fff4804961d7b5.jpg";
-
-/***/ }),
-
-/***/ 544:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "d9442cb3530bb5fefffe.jpg";
+module.exports = __webpack_require__.p + "bc94de424ac893816c71.jpg";
 
 /***/ }),
 
@@ -81,10 +60,6 @@ __webpack_require__.r(__webpack_exports__);
 
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, {
-  "control1": () => /* reexport */ control1,
-  "control2": () => /* reexport */ control2,
-  "controller": () => /* reexport */ controller,
-  "controller2": () => /* reexport */ controller2,
   "currentSlide": () => /* reexport */ currentSlide,
   "endDate": () => /* reexport */ endDate,
   "performAction": () => /* reexport */ performAction,
@@ -216,32 +191,6 @@ const todayDate = new Date();
 const startDate = document.getElementById('startDate').valueAsDate = new Date();
 const endDate = document.getElementById('endDate').valueAsDate = new Date();
 
-const control1 = document.getElementById('startDate').addEventListener('change', controller);
-const control2 = document.getElementById('endDate').addEventListener('change', controller2);
-
-
-function controller(e){
-    if(startDate < todayDate){
-        alert('You should enter a date grater than today!');
-    }
-    else if (startDate > todayDate+16){
-        alert ('Forecast is only available for 16 days.');
-    }
-}        
-
-function controller2 (e){
-    if(endDate < startDate){
-        alert('Return date should be after departure date.');
-        endDate = null;
-    }
-}
-
-
-
-
-
-
-
 
 
 
@@ -278,20 +227,14 @@ function showSlides(n) {
 
 
 
-// EXTERNAL MODULE: ./src/client/assets/images/1.jpg
-var _1 = __webpack_require__(525);
-// EXTERNAL MODULE: ./src/client/assets/images/2.jpg
-var _2 = __webpack_require__(982);
-// EXTERNAL MODULE: ./src/client/assets/images/3.jpg
-var _3 = __webpack_require__(214);
-// EXTERNAL MODULE: ./src/client/assets/images/4.jpg
-var _4 = __webpack_require__(100);
-// EXTERNAL MODULE: ./src/client/assets/images/5.jpg
-var _5 = __webpack_require__(808);
-// EXTERNAL MODULE: ./src/client/assets/images/6.jpg
-var _6 = __webpack_require__(666);
-// EXTERNAL MODULE: ./src/client/assets/images/7.jpg
-var _7 = __webpack_require__(544);
+// EXTERNAL MODULE: ./src/client/assets/images/44dedf10ab048affca1f.jpg
+var _44dedf10ab048affca1f = __webpack_require__(881);
+// EXTERNAL MODULE: ./src/client/assets/images/60e12d72799d19301dbf.jpg
+var _60e12d72799d19301dbf = __webpack_require__(675);
+// EXTERNAL MODULE: ./src/client/assets/images/bc94de424ac893816c71.jpg
+var bc94de424ac893816c71 = __webpack_require__(530);
+// EXTERNAL MODULE: ./src/client/assets/images/3f27660d13eb755e223b.jpg
+var _3f27660d13eb755e223b = __webpack_require__(806);
 // EXTERNAL MODULE: ./src/client/assets/images/logo_geonames.png
 var logo_geonames = __webpack_require__(739);
 // EXTERNAL MODULE: ./src/client/assets/images/logo_weatherbit.png
@@ -299,9 +242,6 @@ var logo_weatherbit = __webpack_require__(679);
 // EXTERNAL MODULE: ./src/client/assets/images/logo_pixabay.png
 var logo_pixabay = __webpack_require__(405);
 ;// CONCATENATED MODULE: ./src/client/index.js
-
-
-
 
 
 
