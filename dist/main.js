@@ -225,7 +225,6 @@ function showSlides(n) {
 
 
 
-alert("Welcome to Travel App :)")
 console.log("Hello!!");
 
 /***/ })

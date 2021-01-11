@@ -37,8 +37,15 @@ module.exports = {
                 ]
             },
             {
-                test: /\.(woff|woff2|eot|ttf|otf)$/i,
-                type: 'asset/resource',
+                test: /\.ttf$/,
+                use: [
+                  {
+                    loader: 'ttf-loader',
+                    options: {
+                      name: './assets/fonts/[hash].[ext]',
+                    },
+                  },
+                ]
             }
         ]
     },

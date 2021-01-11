@@ -34,5 +34,4 @@ export {
     currentSlide,
 }
 
-alert("Welcome to Travel App :)")
 console.log("Hello!!");
