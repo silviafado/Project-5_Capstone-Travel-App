@@ -6,7 +6,7 @@ body{
 #form{
     display: grid;
     grid-template-rows: 70px;
-    grid-template-columns: auto auto 180px 180px auto;
+    grid-template-columns: auto auto 200px 200px auto;
     padding-top: 10px;
     padding-right: 15px;
     padding-bottom: 20px;
@@ -68,7 +68,7 @@ input{
 button{
     display: block;
     width: 80%;
-    padding-left: 15px;
+    margin: 10px;
     height: 50px;
     background:  rgb(51, 48, 48);;
     color: white;
@@ -93,6 +93,7 @@ footer{
     justify-content: space-evenly;
     padding-left: 10%;
     padding-right: 10%;
+    margin: 30px;
   }
 
 
