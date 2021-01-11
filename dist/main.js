@@ -3,77 +3,7 @@ var Client;Client =
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 525:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "d1f11e10b75486991441.jpg";
-
-/***/ }),
-
-/***/ 982:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "94645b6cb51a3cea58ee.jpg";
-
-/***/ }),
-
-/***/ 214:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "52a553049ebece8aa5c1.jpg";
-
-/***/ }),
-
-/***/ 100:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "f8ed88fdb9340b9d5585.jpg";
-
-/***/ }),
-
-/***/ 808:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "1f4735e273d96fe73d4f.jpg";
-
-/***/ }),
-
-/***/ 666:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "dd88caab7a04ba22ef1c.jpg";
-
-/***/ }),
-
-/***/ 544:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "c59338d58844efdee0c5.jpg";
-
-/***/ }),
-
-/***/ 739:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "6d7cac264440c0e2dc3e.png";
-
-/***/ }),
-
-/***/ 405:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "a4644a4ef2cdc210c5b6.png";
-
-/***/ }),
-
-/***/ 679:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "28bb7210b56049721342.png";
-
-/***/ }),
-
-/***/ 202:
+/***/ 63:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 // ESM COMPAT FLAG
@@ -248,26 +178,26 @@ function showSlides(n) {
 
 
 
-// EXTERNAL MODULE: ./src/client/assets/images/1.jpg
-var _1 = __webpack_require__(525);
-// EXTERNAL MODULE: ./src/client/assets/images/2.jpg
-var _2 = __webpack_require__(982);
-// EXTERNAL MODULE: ./src/client/assets/images/3.jpg
-var _3 = __webpack_require__(214);
-// EXTERNAL MODULE: ./src/client/assets/images/4.jpg
-var _4 = __webpack_require__(100);
-// EXTERNAL MODULE: ./src/client/assets/images/5.jpg
-var _5 = __webpack_require__(808);
-// EXTERNAL MODULE: ./src/client/assets/images/6.jpg
-var _6 = __webpack_require__(666);
-// EXTERNAL MODULE: ./src/client/assets/images/7.jpg
-var _7 = __webpack_require__(544);
-// EXTERNAL MODULE: ./src/client/assets/images/logo_geonames.png
-var logo_geonames = __webpack_require__(739);
-// EXTERNAL MODULE: ./src/client/assets/images/logo_weatherbit.png
-var logo_weatherbit = __webpack_require__(679);
-// EXTERNAL MODULE: ./src/client/assets/images/logo_pixabay.png
-var logo_pixabay = __webpack_require__(405);
+;// CONCATENATED MODULE: ./src/client/assets/images/1.jpg
+/* harmony default export */ const _1 = (__webpack_require__.p + "assets/images/1.jpg");
+;// CONCATENATED MODULE: ./src/client/assets/images/2.jpg
+/* harmony default export */ const _2 = (__webpack_require__.p + "assets/images/2.jpg");
+;// CONCATENATED MODULE: ./src/client/assets/images/3.jpg
+/* harmony default export */ const _3 = (__webpack_require__.p + "assets/images/3.jpg");
+;// CONCATENATED MODULE: ./src/client/assets/images/4.jpg
+/* harmony default export */ const _4 = (__webpack_require__.p + "assets/images/4.jpg");
+;// CONCATENATED MODULE: ./src/client/assets/images/5.jpg
+/* harmony default export */ const _5 = (__webpack_require__.p + "assets/images/5.jpg");
+;// CONCATENATED MODULE: ./src/client/assets/images/6.jpg
+/* harmony default export */ const _6 = (__webpack_require__.p + "assets/images/6.jpg");
+;// CONCATENATED MODULE: ./src/client/assets/images/7.jpg
+/* harmony default export */ const _7 = (__webpack_require__.p + "assets/images/7.jpg");
+;// CONCATENATED MODULE: ./src/client/assets/images/logo_geonames.png
+/* harmony default export */ const logo_geonames = (__webpack_require__.p + "assets/images/logo_geonames.png");
+;// CONCATENATED MODULE: ./src/client/assets/images/logo_weatherbit.png
+/* harmony default export */ const logo_weatherbit = (__webpack_require__.p + "assets/images/logo_weatherbit.png");
+;// CONCATENATED MODULE: ./src/client/assets/images/logo_pixabay.png
+/* harmony default export */ const logo_pixabay = (__webpack_require__.p + "assets/images/logo_pixabay.png");
 ;// CONCATENATED MODULE: ./src/client/index.js
 
 
@@ -387,6 +317,6 @@ console.log("Hello!!");
 /******/ 	// module exports must be returned from runtime so entry inlining is disabled
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(202);
+/******/ 	return __webpack_require__(63);
 /******/ })()
 ;
