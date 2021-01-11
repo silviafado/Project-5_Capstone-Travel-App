@@ -1,5 +1,5 @@
 /* Form responsive rules */
-@media (max-width: 460px){
+@media (max-width: 520px){
     #form{
         display: grid;
         grid-template-columns: auto;
@@ -21,7 +21,7 @@
     }
 }  
 
-@media (min-width: 461px) and (max-width: 900px){
+@media (min-width: 521px) and (max-width: 900px){
     #form{
         display: grid;
         grid-template-columns: auto auto;
