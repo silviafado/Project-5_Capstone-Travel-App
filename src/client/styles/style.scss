@@ -1,6 +1,6 @@
 // General styling 
 body{
-    font-family: 'Oswald', sans-serif;
+    font-family: 'RobotoMono';
     background-color: white;
 }
 
@@ -47,7 +47,7 @@ input, textarea{
     padding-left: 10px;
     color:  rgb(71, 67, 67);;
     font-size: 20px;
-    font-family: 'Oswald', sans-serif;
+    font-family: 'RobotoMono';
     font-weight: 300;
     border: none;
 }
@@ -60,20 +60,28 @@ input{
 ::placeholder { /* Firefox, Chrome, Opera */ 
     color: #b8b7b7;
     font-weight: 100; 
-    font-family: 'Oswald', sans-serif;
+    font-family: 'RobotoMono';
 } 
   
 :-ms-input-placeholder { /* Internet Explorer 10-11 */ 
     color: #b8b7b7;
     font-weight: 100; 
-    font-family: 'Oswald', sans-serif;
+    font-family: 'RobotoMono';
 } 
   
 ::-ms-input-placeholder { /* Microsoft Edge */ 
     color: #b8b7b7;
     font-weight: 100; 
-    font-family: 'Oswald', sans-serif;
+    font-family: 'RobotoMono';
 } 
+
+/* :focus none */
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
 
 /* Styling button */
 button{
@@ -81,10 +89,10 @@ button{
     width: 80%;
     margin: 10px;
     height: 50px;
-    background:  rgb(51, 48, 48);;
+    background:  rgb(51, 48, 48);
     color: white;
     font-size: 20px;
-    font-family: 'Oswald', sans-serif;
+    font-family: 'RobotoMono';
     border-radius: 30px;
     box-shadow: 2px 4px 5px rgb(29, 29, 29);
 }
@@ -95,6 +103,7 @@ button:hover{
 
 /* Title form results */
 .title{
+    font-family: 'RobotoMonoB';
     text-decoration: underline; 
     font-size: 25px;
 }
@@ -103,7 +112,7 @@ button:hover{
 .holder_entry {
     background: rgb(250, 251, 252);
     border-radius: 5px;
-    padding: 10px;
+    padding: 25px;
 }
 
 /* Form picture from pixabay */
@@ -117,12 +126,21 @@ button:hover{
 
 // footer
 footer{
-    background-color: #332e2e;
+    background-color: rgb(51, 48, 48);
     color: white;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-evenly;
-    padding: 30px;
     margin-bottom: 0;
-  }
+}
+
+.logos{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 30px;
+}
+
+/* Logos hover*/
+.log:hover{
+    border: 1px solid white;
+    box-shadow: rgb(189, 187, 187);
+}
