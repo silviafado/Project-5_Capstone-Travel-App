@@ -136,7 +136,6 @@ const updatePix=async()=>{
 
 
 
-
 ;// CONCATENATED MODULE: ./src/client/js/helpers.js
 const todayDate = new Date();
 const startDate = document.getElementById('startDate').valueAsDate = new Date();
