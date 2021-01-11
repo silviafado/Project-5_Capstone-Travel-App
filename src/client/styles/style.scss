@@ -1,6 +1,7 @@
 // General styling 
 body{
-    font-family: 'RobotoMono';
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 300;
     background-color: white;
 }
 
@@ -14,7 +15,7 @@ h1 {
 #form{
     display: grid;
     grid-template-rows: 70px;
-    grid-template-columns: auto auto 200px 200px auto;
+    grid-template-columns: auto auto 230px 230px auto;
     padding-top: 10px;
     padding-right: 15px;
     padding-bottom: 20px;
@@ -47,8 +48,6 @@ input, textarea{
     padding-left: 10px;
     color:  rgb(71, 67, 67);;
     font-size: 20px;
-    font-family: 'RobotoMono';
-    font-weight: 300;
     border: none;
 }
 
@@ -99,7 +98,7 @@ button:hover{
 
 /* Title form results */
 .title{
-    font-weight: bold;
+    font-weight: 500;
     text-decoration: underline; 
     font-size: 25px;
 }
