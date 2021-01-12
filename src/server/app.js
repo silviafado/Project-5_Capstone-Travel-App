@@ -1,7 +1,5 @@
 const router = require('express').Router();
 
-const server = require ('./router')
-
 // Define fetch in NodeJS
 const fetch = require('node-fetch');
 
@@ -9,6 +7,9 @@ const fetch = require('node-fetch');
 const apiGeonames = process.env.API_KEY_GEONAMES;
 const apiWeatherbit = process.env.API_KEY_WEATHERBIT;
 const apiPixabay = process.env.API_KEY_PIXABAY;
+
+geoData = {};
+tempData = {};
 
 // Initialize GET routes with a callback function
 /* GET route for weatherbit.io */
@@ -88,7 +89,7 @@ router.post('/addPix', addPix);
 // Async function for API call to geonames.org
 async function addPix(req, res) {
     let city = req.body.formDestination;
-    const urlPixabay = `https://pixabay.com/api/?key=${apiPixabay}&q=${city}&image_type=photo&orientation=horizontal&category=travel`;
+    const urlPixabay = `https://pixabay.com/api/?key=${apiPixabay}&q=${city}&image_type=photo&orientation=horizontal&category=travel&pretty=true`;
     const pixResult = await fetch(urlPixabay);
     try {
         const apiPix = await pixResult.json();

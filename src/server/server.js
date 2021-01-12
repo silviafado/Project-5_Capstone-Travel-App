@@ -1,3 +1,4 @@
+
 //Require .env file for API_KEYs
 const dotenv = require('dotenv');
 dotenv.config();
@@ -29,7 +30,7 @@ app.listen(8001, function () {
 });
 
 // Require app.js with api routes
-const routes = require('./app');
+const routes = require('./app')
 app.use(routes);
 
 module.exports = app
