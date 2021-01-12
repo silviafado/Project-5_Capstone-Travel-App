@@ -1,11 +1,10 @@
-
-//Require .env file for API_KEYs
+// Require .env file for API_KEYs
 const dotenv = require('dotenv');
 dotenv.config();
 
 const path = require('path');
 
-//Express server
+// Express server
 const express = require('express');
 const app = express();
 app.use(express.static('dist'));

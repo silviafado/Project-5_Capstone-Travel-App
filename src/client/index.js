@@ -19,7 +19,6 @@ import './assets/images/logo_geonames.png'
 import './assets/images/logo_weatherbit.png'
 import './assets/images/logo_pixabay.png'
 
-
 export {
     performAction,
     postGeo,
