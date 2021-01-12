@@ -14,6 +14,7 @@ import './assets/images/4.jpg'
 import './assets/images/5.jpg'
 import './assets/images/6.jpg'
 import './assets/images/7.jpg'
+import './assets/images/adventure.jpg'
 import './assets/images/logo_geonames.png'
 import './assets/images/logo_weatherbit.png'
 import './assets/images/logo_pixabay.png'
@@ -35,3 +36,8 @@ export {
 }
 
 console.log("Hello!!");
+
+/* Event listener to add function to Search button */
+document.addEventListener('DOMContentLoaded', () => {
+    const generate=document.getElementById('perform_action').addEventListener('click', performAction);
+});    

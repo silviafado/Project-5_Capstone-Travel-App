@@ -54,7 +54,7 @@
 
     <main>
       <section>
-      <form class ="holder destination" id="form" onsubmit="return Client.performAction(event)">
+      <form class ="holder destination" id="form">
           <div class="nested_grid" id="nest1">
             <label id="origin_label" type="text">Origin</label>
             <input id="origin_input" type="text" name="org_input" value="" placeholder="Type your origin" required></imput>
@@ -72,7 +72,7 @@
             <input type="date" id="end_date" name="trip-end" value="" min="2021-01-01" max="2021-12-31" required>
           </div>
         <div class="button" id="button">
-          <button id="perform_action" type = "submit" name="check" value="" onclick="return Client.performAction(event)" onsubmit="return Client.performAction(event)">Search</button>
+          <button id="perform_action" type ="submit" name="check" value="">Search</button>
         </div>
       </form>
       </section>
