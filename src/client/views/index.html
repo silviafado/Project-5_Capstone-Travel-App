@@ -2,6 +2,9 @@
 <html>
   <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com"> 
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;500&display=swap" rel="stylesheet">
     <title>Travel App</title>
   </head>
@@ -14,27 +17,27 @@
     </header>
 
     <!-- Slideshow container -->
-    <div class="slideshow-container">
+    <div class="slideshow_container">
       <!-- Full-width images with number and caption text -->
-      <div class="mySlides fade">
+      <div class="my_slides fade">
        <img src="../assets/images/1.jpg" style="width:100%">
       </div>
-      <div class="mySlides fade">
+      <div class="my_slides fade">
         <img src="../assets/images/2.jpg" style="width:100%">
       </div>
-      <div class="mySlides fade">
+      <div class="my_slides fade">
         <img src="../assets/images/3.jpg" style="width:100%">
       </div>
-      <div class="mySlides fade">
+      <div class="my_slides fade">
         <img src="../assets/images/4.jpg" style="width:100%">
       </div>
-      <div class="mySlides fade">
+      <div class="my_slides fade">
         <img src="../assets/images/5.jpg" style="width:100%">
       </div>
-      <div class="mySlides fade">
+      <div class="my_slides fade">
         <img src="../assets/images/6.jpg" style="width:100%">
       </div>
-      <div class="mySlides fade">
+      <div class="my_slides fade">
         <img src="../assets/images/7.jpg" style="width:100%">
       </div> 
     <!-- The dots/circles -->
@@ -52,31 +55,31 @@
     <main>
       <section>
       <form class ="holder destination" id="form" onsubmit="return Client.performAction(event)">
-          <div class="nestedGrid" id="nest1">
-            <label id="originLabel" type="text">Origin</label>
-            <textarea id="originInput" type="text" name="orgInput" value="" placeholder="Type your origin" ></textarea>
+          <div class="nested_grid" id="nest1">
+            <label id="origin_label" type="text">Origin</label>
+            <input id="origin_input" type="text" name="org_input" value="" placeholder="Type your origin" required></imput>
           </div>
-          <div class="nestedGrid" id="nest2">
-            <label id="destinationLabel" type="text">Destination</label>
-            <textarea id="destinationInput" type="text" name="destInput" value="" placeholder="Type your destination"></textarea>
+          <div class="nested_grid" id="nest2">
+            <label id="destination_label" type="text">Destination</label>
+            <input id="destination_input" type="text" name="dest_input" value="" placeholder="Type your destination" required></input>
           </div>       
-          <div class="nestedGrid" id="nest3">
-            <label id="dateLabel1" type="text">Departure date</label>
-            <input type="date" id="startDate" name="trip-start" value="" min="2021-01-01" max="2021-12-31">   
+          <div class="nested_grid" id="nest3">
+            <label id="date_label1" type="text">Departure date</label>
+            <input type="date" id="start_date" name="trip-start" value="" min="2021-01-01" max="2021-12-31" required>   
           </div>      
-          <div class="nestedGrid" id="nest4"> 
-            <label id="dateLabel2" type="text">Return date</label>
-            <input type="date" id="endDate" name="trip-end" value="" min="2021-01-01" max="2021-12-31">
+          <div class="nested_grid" id="nest4"> 
+            <label id="date_label2" type="text">Return date</label>
+            <input type="date" id="end_date" name="trip-end" value="" min="2021-01-01" max="2021-12-31" required>
           </div>
         <div class="button" id="button">
-          <button id="performAction" type = "submit" name="check" value="" onclick="return Client.performAction(event)" onsubmit="return Client.performAction(event)">Search</button>
+          <button id="perform_action" type = "submit" name="check" value="" onclick="return Client.performAction(event)" onsubmit="return Client.performAction(event)">Search</button>
         </div>
       </form>
       </section>
       <section>
         <div class ="holder_entry">
           <div class = "title">Your destination forecast:</div>
-          <div id = "entryHolder" rows="10" columns="50">
+          <div id = "entry_holder" rows="10" columns="50">
             <div id = "date"></div> 
             <div id = "destination"></div>
             <div id = "country"></div>
@@ -90,7 +93,7 @@
             <div id = "trip_duration"></div>
           </div>
           <div id="picture">
-            <img id="dest_picture" src="" alt="Destination image">
+            <img id="dest_picture" src="../assets/images/adventure.jpg" alt="Destination image">
           </div>
         </div>
       </section>

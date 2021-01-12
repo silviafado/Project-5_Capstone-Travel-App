@@ -7,7 +7,7 @@ body{
 
 /* Homepage title */
 h1 {
-    font-family: 'Pacifico';
+    font-family: 'Pacifico', cursive;
     font-size: 30px;
 }
 
@@ -29,7 +29,7 @@ h1 {
 }
 
 /* nestedGrid city and dates label-input */
-.nestedGrid{
+.nested_grid{
     display: grid;
     grid-template-columns: 100%;
     grid-template-rows: 20px 50px;
@@ -43,7 +43,9 @@ label{
     background-color: white;
 }
 
-input, textarea{
+input{
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 300;
     background: white;
     padding-left: 10px;
     color:  rgb(71, 67, 67);;
@@ -51,22 +53,28 @@ input, textarea{
     border: none;
 }
 
-input{
+#nest3, #nest4{
     padding-right: 30px;
 }
 
 /* Style for Placeholder Text*/
 ::placeholder { /* Firefox, Chrome, Opera */ 
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 300;
     color: #b8b7b7;
     font-weight: 100;
 } 
   
 :-ms-input-placeholder { /* Internet Explorer 10-11 */ 
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 300;
     color: #b8b7b7;
     font-weight: 100;
 } 
   
 ::-ms-input-placeholder { /* Microsoft Edge */ 
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 300;
     color: #b8b7b7;
     font-weight: 100; 
 } 
@@ -81,6 +89,8 @@ button:focus {
 
 /* Styling button */
 button{
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 500;
     display: block;
     width: 80%;
     margin: 10px;

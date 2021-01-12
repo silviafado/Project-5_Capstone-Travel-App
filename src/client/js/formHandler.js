@@ -1,9 +1,9 @@
 // Function called by event listener
 function performAction(event){
     event.preventDefault()
-    const formDestination=document.getElementById('destinationInput').value;
-    const formDeparture=document.getElementById('startDate').value;
-    const formReturn=document.getElementById('endDate').value;
+    const formDestination=document.getElementById('destination_input').value;
+    const formDeparture=document.getElementById('start_date').value;
+    const formReturn=document.getElementById('end_date').value;
         postGeo('http://localhost:8001/addEntry', {formDestination})
         .then (() => {
         postWeather('http://localhost:8001/addTemp', {formDeparture, formReturn})   

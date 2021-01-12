@@ -1,7 +1,7 @@
 * {box-sizing:border-box}
 
 /* Slideshow container */
-.slideshow-container{
+.slideshow_container{
     position: relative;
     margin: auto;
     transition: opacity 1.5s ease-in-out;
@@ -13,7 +13,7 @@ img + img{
 }
 
 /* Hide the images by default */
-.mySlides {
+.my_slides {
     display: none;
 }
 
