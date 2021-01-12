@@ -23,17 +23,13 @@ app.use(cors());
 // Define fetch in NodeJS
 const fetch = require('node-fetch');
 
-app.get('/', function (req, res) {
-    res.sendFile('dist/index.html')
-});
-
 // Designates what port the app will listen to for incoming requests
 app.listen(8001, function () {
     console.log('Example app listening on port 8001!')
 });
 
 // Require app.js with api routes
-const routes = require('./app')
+const routes = require('./app');
 app.use(routes);
 
 module.exports = app

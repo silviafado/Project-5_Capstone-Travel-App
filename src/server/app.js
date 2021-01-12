@@ -1,5 +1,7 @@
 const router = require('express').Router();
 
+const server = require ('./router')
+
 // Define fetch in NodeJS
 const fetch = require('node-fetch');
 
@@ -86,7 +88,7 @@ router.post('/addPix', addPix);
 // Async function for API call to geonames.org
 async function addPix(req, res) {
     let city = req.body.formDestination;
-    const urlPixabay = `https://pixabay.com/api/?key=${apiPixabay}&q=${city}&image_type=photo&orientation=horizontal&category=travel&pretty=true`;
+    const urlPixabay = `https://pixabay.com/api/?key=${apiPixabay}&q=${city}&image_type=photo&orientation=horizontal&category=travel`;
     const pixResult = await fetch(urlPixabay);
     try {
         const apiPix = await pixResult.json();

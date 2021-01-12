@@ -39,5 +39,5 @@ console.log("Hello!!");
 
 /* Event listener to add function to Search button */
 document.addEventListener('DOMContentLoaded', () => {
-    const generate=document.getElementById('perform_action').addEventListener('click', performAction);
+    const generate=document.getElementById('button').addEventListener('click', performAction);
 });    

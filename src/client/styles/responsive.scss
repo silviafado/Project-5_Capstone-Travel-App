@@ -1,5 +1,5 @@
 /* Form responsive rules */
-@media (max-width: 520px){
+@media (max-width: 600px){
     #form{
         display: grid;
         grid-template-columns: auto;
@@ -17,11 +17,13 @@
     }
     .log{
         width: 80%;
-
+    }
+    #button{
+        width: 94%;
     }
 }  
 
-@media (min-width: 521px) and (max-width: 900px){
+@media (min-width: 601px) and (max-width: 1100px){
     #form{
         display: grid;
         grid-template-columns: auto auto;
@@ -34,5 +36,8 @@
         }
     #dest_picture{
         width: 80%;
+    }
+    #button{
+        width: 94%;
     }
 }    

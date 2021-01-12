@@ -15,7 +15,7 @@ h1 {
 #form{
     display: grid;
     grid-template-rows: 70px;
-    grid-template-columns: auto auto 230px 230px auto;
+    grid-template-columns: auto auto 215px 215px auto;
     padding-top: 10px;
     padding-right: 15px;
     padding-bottom: 20px;
@@ -53,7 +53,7 @@ input{
     border: none;
 }
 
-#nest3, #nest4{
+#start_date, #end_date{
     padding-right: 30px;
 }
 
@@ -83,12 +83,12 @@ input{
 input:focus,
 select:focus,
 textarea:focus,
-button:focus {
+#button:focus {
     outline: none;
 }
 
 /* Styling button */
-button{
+#button{
     font-family: 'Roboto Mono', monospace;
     font-weight: 500;
     display: block;
@@ -102,7 +102,7 @@ button{
     box-shadow: 2px 4px 5px rgb(29, 29, 29);
 }
 
-button:hover{
+#button:hover{
     background: rgb(85, 80, 80);
 }
 
