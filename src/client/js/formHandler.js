@@ -4,20 +4,14 @@ function performAction(event){
     const formDestination=document.getElementById('destination_input').value;
     const formDeparture=document.getElementById('start_date').value;
     const formReturn=document.getElementById('end_date').value;
-        postGeo('http://localhost:8001/addEntry', {formDestination})
+        postData('http://localhost:8001/addEntry', {formDestination, formDeparture, formReturn})
         .then (() => {
-        postWeather('http://localhost:8001/addTemp', {formDeparture, formReturn})   
-        .then (() => {
-        postPix('http://localhost:8001/addPix', {formDestination}) 
-        .then (() => {
-        updateUI()
-        .then (() => {
-        updatePix()    
-        })})})})
-}
+        updateUI() 
+        })
+}        
 
-// Function to POST geoData
-const postGeo=async(url='', data={})=>{
+// Function to POST travelData
+const postData=async(url='', data={})=>{
     console.log(data)
     const response=await fetch(url, {
     method:'POST',
@@ -26,45 +20,9 @@ const postGeo=async(url='', data={})=>{
     body: JSON.stringify(data),
     })
     try{
-        const apiData=await response.json();
-        console.log('Data received:', apiData);
-        return apiData;
-    }catch(error){
-        console.log('error',error);
-    }
-}
-
-// Function to POST tempData
-const postWeather=async(url='', data={})=>{
-    console.log(data)
-    const response=await fetch(url, {
-    method:'POST',
-    credentials:'same-origin',
-    headers:{'Content-Type':'application/json; charset=UTF-8'},
-    body: JSON.stringify(data),
-    })
-    try{
-        const apiTemp=await response.json();
-        console.log('Data received:', apiTemp);
-        return apiTemp;
-    }catch(error){
-        console.log('error',error);
-    }
-}
-
-// Function to POST pixData
-const postPix=async(url='', data={})=>{
-    console.log(data)
-    const response=await fetch(url, {
-    method:'POST',
-    credentials:'same-origin',
-    headers:{'Content-Type':'application/json; charset=UTF-8'},
-    body: JSON.stringify(data),
-    })
-    try{
-        const apiPix=await response.json();
-        console.log('Data received:', apiPix);
-        return apiPix;
+        const postResult=await response.json();
+        console.log('Data received:', postResult);
+        return postResult;
     }catch(error){
         console.log('error',error);
     }
@@ -85,17 +43,7 @@ const updateUI=async()=>{
         document.getElementById('wind_speed').innerHTML='Wind speed in m/s: '+newEntry.wind_speed.toFixed(2);
         document.getElementById('precipitation').innerHTML='Probability of Precipitation (%): '+newEntry.precipitation;
         document.getElementById('trip_duration').innerHTML='Duration of the trip: '+newEntry.duration+' days';
-    }catch(error){
-        console.log('error',error);
-    }
-}
-
-// Function to upload picture on User Interface
-const updatePix=async()=>{
-    const request=await fetch('http://localhost:8001/pix');
-    try{
-        const newPicture=await request.json();
-        document.getElementById('dest_picture').setAttribute("src", newPicture.picture);
+        document.getElementById('dest_picture').setAttribute("src", newEntry.picture);
     }catch(error){
         console.log('error',error);
     }
@@ -103,8 +51,5 @@ const updatePix=async()=>{
 
 
 export { performAction }
-export { postGeo }
-export { postWeather }
-export { postPix }
+export { postData }
 export { updateUI }
-export { updatePix }

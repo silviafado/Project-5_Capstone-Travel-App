@@ -10,26 +10,74 @@ const apiGeonames = process.env.API_KEY_GEONAMES;
 const apiWeatherbit = process.env.API_KEY_WEATHERBIT;
 const apiPixabay = process.env.API_KEY_PIXABAY;
 
-// Initialize GET routes with a callback function
-/* GET route for weatherbit.io */
+const travelData = [];
+
+// Initialize GET route with a callback function
 router.get('/data', getData);
 /* Callback function to complete GET '/data' */
 function getData(req,res){
-    res.send(tempData)
-};
-/* GET route for pixabay.com */
-router.get('/pix', getPix);
-/* Callback function to complete GET '/pix' */
-function getPix(req,res){
-    res.send(pixData);
+    res.send(travelData)
 };
 
-/* POST route for geonames.org */
+// POST route
 router.post('/addEntry', addEntry);
 
 // Async function for API call to geonames.org
 async function addEntry(req, res) {
+    let data = {};
     const cityToProcess = req.body.formDestination;
+    /* Calculate time difference for later use */
+    let d = new Date();
+    let depart = new Date (req.body.formDeparture); 
+    let retur = new Date (req.body.formReturn);
+    let x = depart.getDate() - d.getDate();
+    let y = retur.getDate() - depart.getDate();
+    /* Promise to request geonames */
+    const geoPromise = new Promise ( (resolve, reject) => {
+        fetchGeonames(cityToProcess).then(function(response){
+            resolve(response);
+        });
+    });
+    /* Promise to request weatherbit */
+    const weatherPromise = new Promise ( (resolve, reject) => {
+        fetchWeather(data.latitude, data.longitude).then(function(response){
+            resolve(response);
+        });
+    });
+    /* Promise to request pixabay */
+    const pixPromise = new Promise ( (resolve, reject) => {
+        fetchPicture(cityToProcess).then(function(response){
+            resolve(response);
+        });
+    });
+
+    Promise.all([fetchGeonames, fetchWeather, fetchPicture]).then(function(results) {
+        
+
+        const apiTemp = results[x];
+        const apiPix = results[1];
+
+        data.latitude = geoData.latitude;
+        data.longitude = apiData.geonames[0].lng;
+        data.country = apiData.geonames[0].countryName;
+        data.city = apiData.geonames[0].name;
+        data.date = apiTemp.data[x].valid_date;
+        data.temp = apiTemp.data[x].temp;
+        data.max_temp = apiTemp.data[x].max_temp;
+        data.min_temp = apiTemp.data[x].min_temp;
+        data.wind_dir = apiTemp.data[x].wind_dir;
+        data.wind_speed = apiTemp.data[x].wind_spd;
+        data.precipitation = apiTemp.data[x].pop;
+        data.duration = y;
+        data.picture = apiPix.hits[0].webformatURL;
+        
+        console.log(data); 
+        travelData.push(data);
+        res.send('travelData added successfully!')
+    });
+};   
+
+async function fetchGeonames(cityToProcess, res) {
     const urlGeonames = `http://api.geonames.org/search?username=${apiGeonames}&type=json&name_equals=${cityToProcess}`;
     const geoResult = await fetch(urlGeonames);
     try {
@@ -41,62 +89,33 @@ async function addEntry(req, res) {
             "city":apiData.geonames[0].name,
         };
         console.log(geoData);
-        res.send(geoData);
+        return geoData;
     } catch (error) {
         console.log('ERROR: Could not get apiData from geonames' + error);
     }
 }
 
-/* POST route for weatherbit.io */
-router.post('/addTemp', addTemp);
-
 // Async function for API call to weatherbit.io
-async function addTemp(req, res) {
-    /* Calculate time difference for later use */
-    let d = new Date();
-    let depart = new Date (req.body.formDeparture); 
-    let retur = new Date (req.body.formReturn);
-    let x = depart.getDate() - d.getDate();
-    let y = retur.getDate() - depart.getDate();
-    /* API call */
-    const urlWeatherbit = `http://api.weatherbit.io/v2.0/forecast/daily?&lat=${geoData.latitude}&lon=${geoData.longitude}&key=${apiWeatherbit}`;
+const fetchWeather = async (latitude, longitude) => {
+    const urlWeatherbit = `http://api.weatherbit.io/v2.0/forecast/daily?&lat=${latitude}&lon=${longitude}&key=${apiWeatherbit}`;
     const tempResult = await fetch(urlWeatherbit);
     try {
         const apiTemp = await tempResult.json();
-        tempData={
-            "date":apiTemp.data[x].valid_date,
-            "city":apiTemp.city_name,
-            "country":apiTemp.country_code,
-            "temp":apiTemp.data[x].temp,
-            "max_temp":apiTemp.data[x].max_temp,
-            "min_temp":apiTemp.data[x].min_temp,
-            "wind_dir":apiTemp.data[x].wind_dir,
-            "wind_speed":apiTemp.data[x].wind_spd,
-            "precipitation":apiTemp.data[x].pop,
-            "duration":y,
-        };
-        console.log(tempData);
-        res.send(tempData);
+        console.log(apiTemp);
+        return apiTemp;
     } catch (error) {
         console.log('ERROR: Could not get tempData from weatherbit' + error);
     }
 }
 
-/* POST route for pixabay.com */
-router.post('/addPix', addPix);
 
 // Async function for API call to geonames.org
-async function addPix(req, res) {
-    let city = req.body.formDestination;
+const fetchPicture = async (city) => {
     const urlPixabay = `https://pixabay.com/api/?key=${apiPixabay}&q=${city}&image_type=photo&orientation=horizontal&category=travel`;
     const pixResult = await fetch(urlPixabay);
     try {
         const apiPix = await pixResult.json();
-        pixData={
-            "picture":apiPix.hits[0].webformatURL,
-        }
-        console.log(pixData);
-        res.send(pixData);
+        return apiPix;
     } catch (error) {
         console.log('ERROR: Could not get image from pixabay' + error);
     }

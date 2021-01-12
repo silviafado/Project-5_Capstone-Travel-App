@@ -1,5 +1,5 @@
 
-import { performAction, postGeo, postWeather, postPix, updateUI, updatePix } from './js/formHandler';
+import { performAction, postData, updateUI } from './js/formHandler';
 import { todayDate, startDate, endDate } from './js/helpers'
 import { showSlides, plusSlides, currentSlide } from './js/slides'
 
@@ -22,11 +22,8 @@ import './assets/images/logo_pixabay.png'
 
 export {
     performAction,
-    postGeo,
-    postWeather,
-    postPix,
+    postData,
     updateUI,
-    updatePix,
     startDate,
     todayDate,
     endDate,
