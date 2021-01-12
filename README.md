@@ -1,6 +1,6 @@
 # CAPSTONE: Travel App
 
-# Description:
+# Description
 
 The aim of the project is to create a Travel App that uses API calls and Webpack to request asynchronously user data to dynamically update the UI. The project uses local server running on Node and Express Enviornment.
 
@@ -24,7 +24,7 @@ The goal of this project:
 - Environment Variables: declare our API keys with .env file so they are private, the API calls are made in the server side also for more privacity. 
 
 
-# Instructions to use:
+# Instructions to use
 
 - Enter your trip information: Origin, Destination, Departure Date and Return Date and the forecast for the arrival date and an image of the city will be printed in the app. Press the Search button to make your entry.
 
